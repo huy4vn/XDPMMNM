@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="06e6ade3a09048d0ba07c00cec608c0a" Name="Diagram1" ZoomLevel="63" >
+        <EntityTypeShape EntityType="Model1.NXB" Width="1.5" PointX="2.875" PointY="2.625" />
+        <EntityTypeShape EntityType="Model1.Daili" Width="1.5" PointX="12" PointY="1" />
+        <EntityTypeShape EntityType="Model1.Sach" Width="1.5" PointX="6.625" PointY="3.875" />
+        <AssociationConnector Association="Model1.NXBSach" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model1.Phieunhap" Width="1.5" PointX="2" PointY="5.5" />
+        <EntityTypeShape EntityType="Model1.CTPN" Width="1.5" PointX="4.375" PointY="5" />
+        <AssociationConnector Association="Model1.NXBPhieunhap" />
+        <AssociationConnector Association="Model1.PhieunhapCTPN" />
+        <AssociationConnector Association="Model1.SachCTPN" />
+        <EntityTypeShape EntityType="Model1.Phieuxuat" Width="1.5" PointX="9.5" PointY="0.875" />
+        <EntityTypeShape EntityType="Model1.CTPX" Width="1.5" PointX="7.375" PointY="0.5" />
+        <AssociationConnector Association="Model1.PhieuxuatCTPX" />
+        <AssociationConnector Association="Model1.SachCTPX" ></AssociationConnector>
+        <AssociationConnector Association="Model1.DailiPhieuxuat" />
+        <EntityTypeShape EntityType="Model1.Kho" Width="1.5" PointX="4.875" PointY="0.5" />
+        <AssociationConnector Association="Model1.SachKho" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model1.BaocaoDL" Width="1.5" PointX="12.625" PointY="5" />
+        <AssociationConnector Association="Model1.DailiBaocaoDL" />
+        <EntityTypeShape EntityType="Model1.CTBCDL" Width="1.5" PointX="9.25" PointY="5.5" />
+        <AssociationConnector Association="Model1.BaocaoDLCTBCDL" />
+        <AssociationConnector Association="Model1.CTBCDLSach" />
+        <EntityTypeShape EntityType="Model1.Congno" Width="1.5" PointX="14.25" PointY="2.875" />
+        <AssociationConnector Association="Model1.DailiCongno" />
+        <EntityTypeShape EntityType="Model1.KhoDL" Width="1.5" PointX="10.125" PointY="3.375" />
+        <AssociationConnector Association="Model1.DailiKhoDL" />
+        <AssociationConnector Association="Model1.SachKhoDL" />
+        <EntityTypeShape EntityType="Model1.NoNXB" Width="1.5" PointX="2.75" PointY="0.5" />
+        <AssociationConnector Association="Model1.NXBNoNXB" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
