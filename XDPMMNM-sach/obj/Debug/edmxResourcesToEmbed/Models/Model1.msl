@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="NXBs">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.NXB)">
+        <MappingFragment StoreEntitySet="NXBs">
+          <ScalarProperty Name="IdNXB" ColumnName="IdNXB" />
+          <ScalarProperty Name="TenNXB" ColumnName="TenNXB" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dailis">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Daili)">
+        <MappingFragment StoreEntitySet="Dailis">
+          <ScalarProperty Name="IdDL" ColumnName="IdDL" />
+          <ScalarProperty Name="TenDL" ColumnName="TenDL" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saches">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Sach)">
+        <MappingFragment StoreEntitySet="Saches">
+          <ScalarProperty Name="IdSach" ColumnName="IdSach" />
+          <ScalarProperty Name="TenSach" ColumnName="TenSach" />
+          <ScalarProperty Name="TacGia" ColumnName="TacGia" />
+          <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+          <ScalarProperty Name="GiaXuat" ColumnName="GiaXuat" />
+          <ScalarProperty Name="IdNXB" ColumnName="IdNXB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phieunhaps1">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Phieunhap)">
+        <MappingFragment StoreEntitySet="Phieunhaps1">
+          <ScalarProperty Name="IdPn" ColumnName="IdPn" />
+          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+          <ScalarProperty Name="NguoiGiao" ColumnName="NguoiGiao" />
+          <ScalarProperty Name="IdNXB" ColumnName="IdNXB" />
+          <ScalarProperty Name="NguoiNhan" ColumnName="NguoiNhan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTPNs">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.CTPN)">
+        <MappingFragment StoreEntitySet="CTPNs">
+          <ScalarProperty Name="IdPn" ColumnName="IdPn" />
+          <ScalarProperty Name="IdSach" ColumnName="IdSach" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phieuxuats">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Phieuxuat)">
+        <MappingFragment StoreEntitySet="Phieuxuats">
+          <ScalarProperty Name="IdPx" ColumnName="IdPx" />
+          <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
+          <ScalarProperty Name="NguoiNhan" ColumnName="NguoiNhan" />
+          <ScalarProperty Name="IdDL" ColumnName="IdDL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTPXes">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.CTPX)">
+        <MappingFragment StoreEntitySet="CTPXes">
+          <ScalarProperty Name="IdPx" ColumnName="IdPx" />
+          <ScalarProperty Name="IdSach" ColumnName="IdSach" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Khoes">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Kho)">
+        <MappingFragment StoreEntitySet="Khoes">
+          <ScalarProperty Name="NgayGhi" ColumnName="NgayGhi" />
+          <ScalarProperty Name="IdSach" ColumnName="IdSach" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BaocaoDLs">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.BaocaoDL)">
+        <MappingFragment StoreEntitySet="BaocaoDLs">
+          <ScalarProperty Name="IdBC" ColumnName="IdBC" />
+          <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+          <ScalarProperty Name="IdDL" ColumnName="IdDL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTBCDLs">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.CTBCDL)">
+        <MappingFragment StoreEntitySet="CTBCDLs">
+          <ScalarProperty Name="IdBC" ColumnName="IdBC" />
+          <ScalarProperty Name="IdSach" ColumnName="IdSach" />
+          <ScalarProperty Name="SLBanDc" ColumnName="SLBanDc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Congnoes">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Congno)">
+        <MappingFragment StoreEntitySet="Congnoes">
+          <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+          <ScalarProperty Name="IdDL" ColumnName="IdDL" />
+          <ScalarProperty Name="SLsachlay" ColumnName="SLsachlay" />
+          <ScalarProperty Name="Tongtienno" ColumnName="Tongtienno" />
+          <ScalarProperty Name="Tongtiendatra" ColumnName="Tongtiendatra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhoDLs">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.KhoDL)">
+        <MappingFragment StoreEntitySet="KhoDLs">
+          <ScalarProperty Name="IdDL" ColumnName="IdDL" />
+          <ScalarProperty Name="IdSach" ColumnName="IdSach" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NoNXBs">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.NoNXB)">
+        <MappingFragment StoreEntitySet="NoNXBs">
+          <ScalarProperty Name="IdNXB" ColumnName="IdNXB" />
+          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+          <ScalarProperty Name="TienNo" ColumnName="TienNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DailiKhoDL" TypeName="Model1.DailiKhoDL" StoreEntitySet="Dailis">
+      <EndProperty Name="KhoDL">
+        <ScalarProperty Name="IdDL" ColumnName="KhoDL_IdDL" />
+        <ScalarProperty Name="IdSach" ColumnName="KhoDL_IdSach" />
+      </EndProperty>
+      <EndProperty Name="Daili">
+        <ScalarProperty Name="IdDL" ColumnName="IdDL" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="NXBNoNXB" TypeName="Model1.NXBNoNXB" StoreEntitySet="NXBs">
+      <EndProperty Name="NoNXB">
+        <ScalarProperty Name="IdNXB" ColumnName="NoNXB_IdNXB" />
+      </EndProperty>
+      <EndProperty Name="NXB">
+        <ScalarProperty Name="IdNXB" ColumnName="IdNXB" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

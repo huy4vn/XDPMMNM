@@ -88,7 +88,6 @@
     <Property Name="TenNXB" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DiaChi" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SDT" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="NoNXB_IdNXB" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Dailis">
     <Key>
@@ -197,10 +196,11 @@
   <EntityType Name="NoNXBs">
     <Key>
       <PropertyRef Name="IdNXB" />
+      <PropertyRef Name="NgayNhap" />
     </Key>
-    <Property Name="IdNXB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NgayNhap" Type="datetime" Nullable="false" />
-    <Property Name="TienNo" Type="int" Nullable="false" />
+    <Property Name="TienNo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdNXB" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="NXBSach">
     <End Role="NXB" Type="Model1.Store.NXBs" Multiplicity="1" />
@@ -373,14 +373,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="NXBNoNXB">
-    <End Role="NXB" Type="Model1.Store.NXBs" Multiplicity="*" />
-    <End Role="NoNXB" Type="Model1.Store.NoNXBs" Multiplicity="1" />
+    <End Role="NXB" Type="Model1.Store.NXBs" Multiplicity="1" />
+    <End Role="NoNXB" Type="Model1.Store.NoNXBs" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="NoNXB">
+      <Principal Role="NXB">
         <PropertyRef Name="IdNXB" />
       </Principal>
-      <Dependent Role="NXB">
-        <PropertyRef Name="NoNXB_IdNXB" />
+      <Dependent Role="NoNXB">
+        <PropertyRef Name="IdNXB" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -473,7 +473,7 @@
           <Property Name="SDT" Type="String" Nullable="false" />
           <NavigationProperty Name="Saches" Relationship="Model1.NXBSach" FromRole="NXB" ToRole="Sach" />
           <NavigationProperty Name="Phieunhaps" Relationship="Model1.NXBPhieunhap" FromRole="NXB" ToRole="Phieunhap" />
-          <NavigationProperty Name="NoNXB" Relationship="Model1.NXBNoNXB" FromRole="NXB" ToRole="NoNXB" />
+          <NavigationProperty Name="NoNXBs" Relationship="Model1.NXBNoNXB" FromRole="NXB" ToRole="NoNXB" />
         </EntityType>
         <EntityType Name="Daili">
           <Key>
@@ -763,18 +763,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="NoNXB">
+        <EntityType Name="NoNXB" >
           <Key>
             <PropertyRef Name="IdNXB" />
+            <PropertyRef Name="NgayNhap" />
           </Key>
-          <Property Name="IdNXB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="NXB" Relationship="Model1.NXBNoNXB" FromRole="NoNXB" ToRole="NXB" />
           <Property Name="NgayNhap" Type="DateTime" Nullable="false" />
-          <Property Name="TienNo" Type="Int32" Nullable="false" />
+          <Property Name="TienNo" Type="String" Nullable="false" />
+          <NavigationProperty Name="NXB" Relationship="Model1.NXBNoNXB" FromRole="NoNXB" ToRole="NXB" />
+          <Property Name="IdNXB" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="NXBNoNXB">
           <End Type="Model1.NXB" Role="NXB" Multiplicity="1" />
-          <End Type="Model1.NoNXB" Role="NoNXB" Multiplicity="1" />
+          <End Type="Model1.NoNXB" Role="NoNXB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NXB">
+              <PropertyRef Name="IdNXB" />
+            </Principal>
+            <Dependent Role="NoNXB">
+              <PropertyRef Name="IdNXB" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -916,14 +925,6 @@
       </EndProperty>
       <EndProperty Name="Daili">
         <ScalarProperty Name="IdDL" ColumnName="IdDL" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="NXBNoNXB" TypeName="Model1.NXBNoNXB" StoreEntitySet="NXBs">
-      <EndProperty Name="NoNXB">
-        <ScalarProperty Name="IdNXB" ColumnName="NoNXB_IdNXB" />
-      </EndProperty>
-      <EndProperty Name="NXB">
-        <ScalarProperty Name="IdNXB" ColumnName="IdNXB" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
