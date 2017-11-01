@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="NXBs" EntityType="Model1.NXB" />
+    <EntitySet Name="Dailis" EntityType="Model1.Daili" />
+    <EntitySet Name="Saches" EntityType="Model1.Sach" />
+    <AssociationSet Name="NXBSach" Association="Model1.NXBSach">
+      <End Role="NXB" EntitySet="NXBs" />
+      <End Role="Sach" EntitySet="Saches" />
+    </AssociationSet>
+    <EntitySet Name="Phieunhaps1" EntityType="Model1.Phieunhap" />
+    <EntitySet Name="CTPNs" EntityType="Model1.CTPN" />
+    <AssociationSet Name="NXBPhieunhap" Association="Model1.NXBPhieunhap">
+      <End Role="NXB" EntitySet="NXBs" />
+      <End Role="Phieunhap" EntitySet="Phieunhaps1" />
+    </AssociationSet>
+    <AssociationSet Name="PhieunhapCTPN" Association="Model1.PhieunhapCTPN">
+      <End Role="Phieunhap" EntitySet="Phieunhaps1" />
+      <End Role="CTPN" EntitySet="CTPNs" />
+    </AssociationSet>
+    <AssociationSet Name="SachCTPN" Association="Model1.SachCTPN">
+      <End Role="Sach" EntitySet="Saches" />
+      <End Role="CTPN" EntitySet="CTPNs" />
+    </AssociationSet>
+    <EntitySet Name="Phieuxuats" EntityType="Model1.Phieuxuat" />
+    <EntitySet Name="CTPXes" EntityType="Model1.CTPX" />
+    <AssociationSet Name="PhieuxuatCTPX" Association="Model1.PhieuxuatCTPX">
+      <End Role="Phieuxuat" EntitySet="Phieuxuats" />
+      <End Role="CTPX" EntitySet="CTPXes" />
+    </AssociationSet>
+    <AssociationSet Name="SachCTPX" Association="Model1.SachCTPX">
+      <End Role="Sach" EntitySet="Saches" />
+      <End Role="CTPX" EntitySet="CTPXes" />
+    </AssociationSet>
+    <AssociationSet Name="DailiPhieuxuat" Association="Model1.DailiPhieuxuat">
+      <End Role="Daili" EntitySet="Dailis" />
+      <End Role="Phieuxuat" EntitySet="Phieuxuats" />
+    </AssociationSet>
+    <EntitySet Name="Khoes" EntityType="Model1.Kho" />
+    <AssociationSet Name="SachKho" Association="Model1.SachKho">
+      <End Role="Sach" EntitySet="Saches" />
+      <End Role="Kho" EntitySet="Khoes" />
+    </AssociationSet>
+    <EntitySet Name="BaocaoDLs" EntityType="Model1.BaocaoDL" />
+    <AssociationSet Name="DailiBaocaoDL" Association="Model1.DailiBaocaoDL">
+      <End Role="Daili" EntitySet="Dailis" />
+      <End Role="BaocaoDL" EntitySet="BaocaoDLs" />
+    </AssociationSet>
+    <EntitySet Name="CTBCDLs" EntityType="Model1.CTBCDL" />
+    <AssociationSet Name="BaocaoDLCTBCDL" Association="Model1.BaocaoDLCTBCDL">
+      <End Role="BaocaoDL" EntitySet="BaocaoDLs" />
+      <End Role="CTBCDL" EntitySet="CTBCDLs" />
+    </AssociationSet>
+    <AssociationSet Name="CTBCDLSach" Association="Model1.CTBCDLSach">
+      <End Role="CTBCDL" EntitySet="CTBCDLs" />
+      <End Role="Sach" EntitySet="Saches" />
+    </AssociationSet>
+    <EntitySet Name="Congnoes" EntityType="Model1.Congno" />
+    <AssociationSet Name="DailiCongno" Association="Model1.DailiCongno">
+      <End Role="Daili" EntitySet="Dailis" />
+      <End Role="Congno" EntitySet="Congnoes" />
+    </AssociationSet>
+    <EntitySet Name="KhoDLs" EntityType="Model1.KhoDL" />
+    <AssociationSet Name="DailiKhoDL" Association="Model1.DailiKhoDL">
+      <End Role="Daili" EntitySet="Dailis" />
+      <End Role="KhoDL" EntitySet="KhoDLs" />
+    </AssociationSet>
+    <AssociationSet Name="SachKhoDL" Association="Model1.SachKhoDL">
+      <End Role="Sach" EntitySet="Saches" />
+      <End Role="KhoDL" EntitySet="KhoDLs" />
+    </AssociationSet>
+    <EntitySet Name="NoNXBs" EntityType="Model1.NoNXB" />
+    <AssociationSet Name="NXBNoNXB" Association="Model1.NXBNoNXB">
+      <End Role="NXB" EntitySet="NXBs" />
+      <End Role="NoNXB" EntitySet="NoNXBs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="NXB">
+    <Key>
+      <PropertyRef Name="IdNXB" />
+    </Key>
+    <Property Name="IdNXB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNXB" Type="String" Nullable="false" />
+    <Property Name="DiaChi" Type="String" Nullable="false" />
+    <Property Name="SDT" Type="String" Nullable="false" />
+    <NavigationProperty Name="Saches" Relationship="Model1.NXBSach" FromRole="NXB" ToRole="Sach" />
+    <NavigationProperty Name="Phieunhaps" Relationship="Model1.NXBPhieunhap" FromRole="NXB" ToRole="Phieunhap" />
+    <NavigationProperty Name="NoNXB" Relationship="Model1.NXBNoNXB" FromRole="NXB" ToRole="NoNXB" />
+  </EntityType>
+  <EntityType Name="Daili">
+    <Key>
+      <PropertyRef Name="IdDL" />
+    </Key>
+    <Property Name="IdDL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDL" Type="String" Nullable="false" />
+    <Property Name="DiaChi" Type="String" Nullable="false" />
+    <Property Name="SDT" Type="String" Nullable="false" />
+    <NavigationProperty Name="Phieuxuats" Relationship="Model1.DailiPhieuxuat" FromRole="Daili" ToRole="Phieuxuat" />
+    <NavigationProperty Name="BaocaoDLs" Relationship="Model1.DailiBaocaoDL" FromRole="Daili" ToRole="BaocaoDL" />
+    <NavigationProperty Name="Congnoes" Relationship="Model1.DailiCongno" FromRole="Daili" ToRole="Congno" />
+    <NavigationProperty Name="KhoDL" Relationship="Model1.DailiKhoDL" FromRole="Daili" ToRole="KhoDL" />
+  </EntityType>
+  <EntityType Name="Sach">
+    <Key>
+      <PropertyRef Name="IdSach" />
+    </Key>
+    <Property Name="IdSach" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenSach" Type="String" Nullable="false" />
+    <Property Name="TacGia" Type="String" Nullable="false" />
+    <Property Name="GiaNhap" Type="Int32" Nullable="false" />
+    <Property Name="GiaXuat" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="NXB" Relationship="Model1.NXBSach" FromRole="Sach" ToRole="NXB" />
+    <Property Name="IdNXB" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CTPNs" Relationship="Model1.SachCTPN" FromRole="Sach" ToRole="CTPN" />
+    <NavigationProperty Name="CTPXes" Relationship="Model1.SachCTPX" FromRole="Sach" ToRole="CTPX" />
+    <NavigationProperty Name="Khoes" Relationship="Model1.SachKho" FromRole="Sach" ToRole="Kho" />
+    <NavigationProperty Name="CTBCDLs" Relationship="Model1.CTBCDLSach" FromRole="Sach" ToRole="CTBCDL" />
+    <NavigationProperty Name="KhoDLs" Relationship="Model1.SachKhoDL" FromRole="Sach" ToRole="KhoDL" />
+  </EntityType>
+  <Association Name="NXBSach">
+    <End Type="Model1.NXB" Role="NXB" Multiplicity="1" />
+    <End Type="Model1.Sach" Role="Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NXB">
+        <PropertyRef Name="IdNXB" />
+      </Principal>
+      <Dependent Role="Sach">
+        <PropertyRef Name="IdNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Phieunhap">
+    <Key>
+      <PropertyRef Name="IdPn" />
+    </Key>
+    <Property Name="IdPn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayNhap" Type="DateTime" Nullable="false" />
+    <Property Name="NguoiGiao" Type="String" Nullable="false" />
+    <NavigationProperty Name="NXB" Relationship="Model1.NXBPhieunhap" FromRole="Phieunhap" ToRole="NXB" />
+    <Property Name="IdNXB" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CTPNs" Relationship="Model1.PhieunhapCTPN" FromRole="Phieunhap" ToRole="CTPN" />
+    <Property Name="NguoiNhan" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CTPN">
+    <Key>
+      <PropertyRef Name="IdPn" />
+      <PropertyRef Name="IdSach" />
+    </Key>
+    <NavigationProperty Name="Phieunhap" Relationship="Model1.PhieunhapCTPN" FromRole="CTPN" ToRole="Phieunhap" />
+    <Property Name="IdPn" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sach" Relationship="Model1.SachCTPN" FromRole="CTPN" ToRole="Sach" />
+    <Property Name="IdSach" Type="Int32" Nullable="false" />
+    <Property Name="SL" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="NXBPhieunhap">
+    <End Type="Model1.NXB" Role="NXB" Multiplicity="1" />
+    <End Type="Model1.Phieunhap" Role="Phieunhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NXB">
+        <PropertyRef Name="IdNXB" />
+      </Principal>
+      <Dependent Role="Phieunhap">
+        <PropertyRef Name="IdNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PhieunhapCTPN">
+    <End Type="Model1.Phieunhap" Role="Phieunhap" Multiplicity="1" />
+    <End Type="Model1.CTPN" Role="CTPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phieunhap">
+        <PropertyRef Name="IdPn" />
+      </Principal>
+      <Dependent Role="CTPN">
+        <PropertyRef Name="IdPn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SachCTPN">
+    <End Type="Model1.Sach" Role="Sach" Multiplicity="1" />
+    <End Type="Model1.CTPN" Role="CTPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="IdSach" />
+      </Principal>
+      <Dependent Role="CTPN">
+        <PropertyRef Name="IdSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Phieuxuat">
+    <Key>
+      <PropertyRef Name="IdPx" />
+    </Key>
+    <Property Name="IdPx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayXuat" Type="String" Nullable="false" />
+    <Property Name="NguoiNhan" Type="String" Nullable="false" />
+    <NavigationProperty Name="CTPXes" Relationship="Model1.PhieuxuatCTPX" FromRole="Phieuxuat" ToRole="CTPX" />
+    <NavigationProperty Name="Daili" Relationship="Model1.DailiPhieuxuat" FromRole="Phieuxuat" ToRole="Daili" />
+    <Property Name="IdDL" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CTPX">
+    <Key>
+      <PropertyRef Name="IdPx" />
+      <PropertyRef Name="IdSach" />
+    </Key>
+    <NavigationProperty Name="Phieuxuat" Relationship="Model1.PhieuxuatCTPX" FromRole="CTPX" ToRole="Phieuxuat" />
+    <Property Name="IdPx" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sach" Relationship="Model1.SachCTPX" FromRole="CTPX" ToRole="Sach" />
+    <Property Name="IdSach" Type="Int32" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="PhieuxuatCTPX">
+    <End Type="Model1.Phieuxuat" Role="Phieuxuat" Multiplicity="1" />
+    <End Type="Model1.CTPX" Role="CTPX" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phieuxuat">
+        <PropertyRef Name="IdPx" />
+      </Principal>
+      <Dependent Role="CTPX">
+        <PropertyRef Name="IdPx" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SachCTPX">
+    <End Type="Model1.Sach" Role="Sach" Multiplicity="1" />
+    <End Type="Model1.CTPX" Role="CTPX" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="IdSach" />
+      </Principal>
+      <Dependent Role="CTPX">
+        <PropertyRef Name="IdSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DailiPhieuxuat">
+    <End Type="Model1.Daili" Role="Daili" Multiplicity="1" />
+    <End Type="Model1.Phieuxuat" Role="Phieuxuat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Daili">
+        <PropertyRef Name="IdDL" />
+      </Principal>
+      <Dependent Role="Phieuxuat">
+        <PropertyRef Name="IdDL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Kho">
+    <Key>
+      <PropertyRef Name="NgayGhi" />
+      <PropertyRef Name="IdSach" />
+    </Key>
+    <Property Name="NgayGhi" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <NavigationProperty Name="Sach" Relationship="Model1.SachKho" FromRole="Kho" ToRole="Sach" />
+    <Property Name="IdSach" Type="Int32" Nullable="false" />
+    <Property Name="SL" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="SachKho">
+    <End Type="Model1.Sach" Role="Sach" Multiplicity="1" />
+    <End Type="Model1.Kho" Role="Kho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="IdSach" />
+      </Principal>
+      <Dependent Role="Kho">
+        <PropertyRef Name="IdSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="BaocaoDL">
+    <Key>
+      <PropertyRef Name="IdBC" />
+    </Key>
+    <Property Name="IdBC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ngay" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Daili" Relationship="Model1.DailiBaocaoDL" FromRole="BaocaoDL" ToRole="Daili" />
+    <Property Name="IdDL" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CTBCDLs" Relationship="Model1.BaocaoDLCTBCDL" FromRole="BaocaoDL" ToRole="CTBCDL" />
+  </EntityType>
+  <Association Name="DailiBaocaoDL">
+    <End Type="Model1.Daili" Role="Daili" Multiplicity="1" />
+    <End Type="Model1.BaocaoDL" Role="BaocaoDL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Daili">
+        <PropertyRef Name="IdDL" />
+      </Principal>
+      <Dependent Role="BaocaoDL">
+        <PropertyRef Name="IdDL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CTBCDL">
+    <Key>
+      <PropertyRef Name="IdBC" />
+      <PropertyRef Name="IdSach" />
+    </Key>
+    <NavigationProperty Name="BaocaoDL" Relationship="Model1.BaocaoDLCTBCDL" FromRole="CTBCDL" ToRole="BaocaoDL" />
+    <Property Name="IdBC" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sach" Relationship="Model1.CTBCDLSach" FromRole="CTBCDL" ToRole="Sach" />
+    <Property Name="IdSach" Type="Int32" Nullable="false" />
+    <Property Name="SLBanDc" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="BaocaoDLCTBCDL">
+    <End Type="Model1.BaocaoDL" Role="BaocaoDL" Multiplicity="1" />
+    <End Type="Model1.CTBCDL" Role="CTBCDL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaocaoDL">
+        <PropertyRef Name="IdBC" />
+      </Principal>
+      <Dependent Role="CTBCDL">
+        <PropertyRef Name="IdBC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CTBCDLSach">
+    <End Type="Model1.CTBCDL" Role="CTBCDL" Multiplicity="*" />
+    <End Type="Model1.Sach" Role="Sach" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="IdSach" />
+      </Principal>
+      <Dependent Role="CTBCDL">
+        <PropertyRef Name="IdSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Congno">
+    <Key>
+      <PropertyRef Name="Ngay" />
+    </Key>
+    <Property Name="Ngay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Daili" Relationship="Model1.DailiCongno" FromRole="Congno" ToRole="Daili" />
+    <Property Name="IdDL" Type="Int32" Nullable="false" />
+    <Property Name="SLsachlay" Type="Int32" Nullable="false" />
+    <Property Name="Tongtienno" Type="Int32" Nullable="false" />
+    <Property Name="Tongtiendatra" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="DailiCongno">
+    <End Type="Model1.Daili" Role="Daili" Multiplicity="1" />
+    <End Type="Model1.Congno" Role="Congno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Daili">
+        <PropertyRef Name="IdDL" />
+      </Principal>
+      <Dependent Role="Congno">
+        <PropertyRef Name="IdDL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="KhoDL">
+    <Key>
+      <PropertyRef Name="IdDL" />
+      <PropertyRef Name="IdSach" />
+    </Key>
+    <Property Name="IdDL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Daili" Relationship="Model1.DailiKhoDL" FromRole="KhoDL" ToRole="Daili" />
+    <NavigationProperty Name="Sach" Relationship="Model1.SachKhoDL" FromRole="KhoDL" ToRole="Sach" />
+    <Property Name="IdSach" Type="Int32" Nullable="false" />
+    <Property Name="SL" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="DailiKhoDL">
+    <End Type="Model1.Daili" Role="Daili" Multiplicity="1" />
+    <End Type="Model1.KhoDL" Role="KhoDL" Multiplicity="1" />
+  </Association>
+  <Association Name="SachKhoDL">
+    <End Type="Model1.Sach" Role="Sach" Multiplicity="1" />
+    <End Type="Model1.KhoDL" Role="KhoDL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="IdSach" />
+      </Principal>
+      <Dependent Role="KhoDL">
+        <PropertyRef Name="IdSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="NoNXB">
+    <Key>
+      <PropertyRef Name="IdNXB" />
+    </Key>
+    <Property Name="IdNXB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="NXB" Relationship="Model1.NXBNoNXB" FromRole="NoNXB" ToRole="NXB" />
+    <Property Name="NgayNhap" Type="DateTime" Nullable="false" />
+    <Property Name="TienNo" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="NXBNoNXB">
+    <End Type="Model1.NXB" Role="NXB" Multiplicity="1" />
+    <End Type="Model1.NoNXB" Role="NoNXB" Multiplicity="1" />
+  </Association>
+</Schema>

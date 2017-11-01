@@ -1,0 +1,58 @@
+﻿@model IEnumerable<XDPMMNM_sach.Models.Sach>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TacGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaNhap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaXuat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NXB.TenNXB)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSach)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TacGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaNhap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaXuat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NXB.TenNXB)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdSach }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdSach }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdSach })
+        </td>
+    </tr>
+}
+
+</table>

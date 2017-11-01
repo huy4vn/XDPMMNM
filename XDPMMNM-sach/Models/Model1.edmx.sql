@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/01/2017 21:36:10
+-- Date Created: 11/01/2017 22:54:05
 -- Generated from EDMX file: C:\Users\PC\Documents\XDPMMNM\XDPMMNM-sach\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -59,9 +59,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SachKhoDL]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[KhoDLs] DROP CONSTRAINT [FK_SachKhoDL];
 GO
-IF OBJECT_ID(N'[dbo].[FK_NXBNoNXB]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[NXBs] DROP CONSTRAINT [FK_NXBNoNXB];
-GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -103,9 +100,6 @@ GO
 IF OBJECT_ID(N'[dbo].[KhoDLs]', 'U') IS NOT NULL
     DROP TABLE [dbo].[KhoDLs];
 GO
-IF OBJECT_ID(N'[dbo].[NoNXBs]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[NoNXBs];
-GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -116,8 +110,7 @@ CREATE TABLE [dbo].[NXBs] (
     [IdNXB] int IDENTITY(1,1) NOT NULL,
     [TenNXB] nvarchar(max)  NOT NULL,
     [DiaChi] nvarchar(max)  NOT NULL,
-    [SDT] nvarchar(max)  NOT NULL,
-    [NoNXB_IdNXB] int  NOT NULL
+    [SDT] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -222,9 +215,9 @@ GO
 
 -- Creating table 'NoNXBs'
 CREATE TABLE [dbo].[NoNXBs] (
-    [IdNXB] int IDENTITY(1,1) NOT NULL,
     [NgayNhap] datetime  NOT NULL,
-    [TienNo] int  NOT NULL
+    [TienNo] nvarchar(max)  NOT NULL,
+    [IdNXB] int  NOT NULL
 );
 GO
 
@@ -304,10 +297,10 @@ ADD CONSTRAINT [PK_KhoDLs]
     PRIMARY KEY CLUSTERED ([IdDL], [IdSach] ASC);
 GO
 
--- Creating primary key on [IdNXB] in table 'NoNXBs'
+-- Creating primary key on [IdNXB], [NgayNhap] in table 'NoNXBs'
 ALTER TABLE [dbo].[NoNXBs]
 ADD CONSTRAINT [PK_NoNXBs]
-    PRIMARY KEY CLUSTERED ([IdNXB] ASC);
+    PRIMARY KEY CLUSTERED ([IdNXB], [NgayNhap] ASC);
 GO
 
 -- --------------------------------------------------
@@ -506,19 +499,13 @@ ON [dbo].[KhoDLs]
     ([IdSach]);
 GO
 
--- Creating foreign key on [NoNXB_IdNXB] in table 'NXBs'
-ALTER TABLE [dbo].[NXBs]
+-- Creating foreign key on [IdNXB] in table 'NoNXBs'
+ALTER TABLE [dbo].[NoNXBs]
 ADD CONSTRAINT [FK_NXBNoNXB]
-    FOREIGN KEY ([NoNXB_IdNXB])
-    REFERENCES [dbo].[NoNXBs]
+    FOREIGN KEY ([IdNXB])
+    REFERENCES [dbo].[NXBs]
         ([IdNXB])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_NXBNoNXB'
-CREATE INDEX [IX_FK_NXBNoNXB]
-ON [dbo].[NXBs]
-    ([NoNXB_IdNXB]);
 GO
 
 -- --------------------------------------------------

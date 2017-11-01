@@ -18,6 +18,7 @@ namespace XDPMMNM_sach.Models
         {
             this.Saches = new HashSet<Sach>();
             this.Phieunhaps = new HashSet<Phieunhap>();
+            this.NoNXBs = new HashSet<NoNXB>();
         }
     
         public int IdNXB { get; set; }
@@ -27,6 +28,6 @@ namespace XDPMMNM_sach.Models
     
         public virtual ICollection<Sach> Saches { get; set; }
         public virtual ICollection<Phieunhap> Phieunhaps { get; set; }
-        public virtual NoNXB NoNXB { get; set; }
+        public virtual ICollection<NoNXB> NoNXBs { get; set; }
     }
 }
