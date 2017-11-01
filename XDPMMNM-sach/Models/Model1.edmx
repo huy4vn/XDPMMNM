@@ -9,7 +9,7 @@
     <EntitySet Name="NXBs" EntityType="Model1.Store.NXBs" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Dailis" EntityType="Model1.Store.Dailis" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Saches" EntityType="Model1.Store.Saches" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Phieunhaps1" EntityType="Model1.Store.Phieunhaps1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Phieunhaps" EntityType="Model1.Store.Phieunhaps" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CTPNs" EntityType="Model1.Store.CTPNs" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Phieuxuats" EntityType="Model1.Store.Phieuxuats" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CTPXes" EntityType="Model1.Store.CTPXes" store:Type="Tables" Schema="dbo" />
@@ -25,10 +25,10 @@
     </AssociationSet>
     <AssociationSet Name="NXBPhieunhap" Association="Model1.Store.NXBPhieunhap">
       <End Role="NXB" EntitySet="NXBs" />
-      <End Role="Phieunhap" EntitySet="Phieunhaps1" />
+      <End Role="Phieunhap" EntitySet="Phieunhaps" />
     </AssociationSet>
     <AssociationSet Name="PhieunhapCTPN" Association="Model1.Store.PhieunhapCTPN">
-      <End Role="Phieunhap" EntitySet="Phieunhaps1" />
+      <End Role="Phieunhap" EntitySet="Phieunhaps" />
       <End Role="CTPN" EntitySet="CTPNs" />
     </AssociationSet>
     <AssociationSet Name="SachCTPN" Association="Model1.Store.SachCTPN">
@@ -111,7 +111,7 @@
     <Property Name="GiaXuat" Type="int" Nullable="false" />
     <Property Name="IdNXB" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Phieunhaps1">
+  <EntityType Name="Phieunhaps">
     <Key>
       <PropertyRef Name="IdPn" />
     </Key>
@@ -216,7 +216,7 @@
   </Association>
   <Association Name="NXBPhieunhap">
     <End Role="NXB" Type="Model1.Store.NXBs" Multiplicity="1" />
-    <End Role="Phieunhap" Type="Model1.Store.Phieunhaps1" Multiplicity="*" />
+    <End Role="Phieunhap" Type="Model1.Store.Phieunhaps" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NXB">
         <PropertyRef Name="IdNXB" />
@@ -227,7 +227,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="PhieunhapCTPN">
-    <End Role="Phieunhap" Type="Model1.Store.Phieunhaps1" Multiplicity="1" />
+    <End Role="Phieunhap" Type="Model1.Store.Phieunhaps" Multiplicity="1" />
     <End Role="CTPN" Type="Model1.Store.CTPNs" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Phieunhap">
@@ -396,14 +396,14 @@
             <End Role="NXB" EntitySet="NXBs" />
             <End Role="Sach" EntitySet="Saches" />
           </AssociationSet>
-          <EntitySet Name="Phieunhaps1" EntityType="Model1.Phieunhap" />
+          <EntitySet Name="Phieunhaps" EntityType="Model1.Phieunhap" />
           <EntitySet Name="CTPNs" EntityType="Model1.CTPN" />
           <AssociationSet Name="NXBPhieunhap" Association="Model1.NXBPhieunhap">
             <End Role="NXB" EntitySet="NXBs" />
-            <End Role="Phieunhap" EntitySet="Phieunhaps1" />
+            <End Role="Phieunhap" EntitySet="Phieunhaps" />
           </AssociationSet>
           <AssociationSet Name="PhieunhapCTPN" Association="Model1.PhieunhapCTPN">
-            <End Role="Phieunhap" EntitySet="Phieunhaps1" />
+            <End Role="Phieunhap" EntitySet="Phieunhaps" />
             <End Role="CTPN" EntitySet="CTPNs" />
           </AssociationSet>
           <AssociationSet Name="SachCTPN" Association="Model1.SachCTPN">
@@ -823,9 +823,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Phieunhaps1">
+    <EntitySetMapping Name="Phieunhaps">
       <EntityTypeMapping TypeName="IsTypeOf(Model1.Phieunhap)">
-        <MappingFragment StoreEntitySet="Phieunhaps1">
+        <MappingFragment StoreEntitySet="Phieunhaps">
           <ScalarProperty Name="IdPn" ColumnName="IdPn" />
           <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
           <ScalarProperty Name="NguoiGiao" ColumnName="NguoiGiao" />

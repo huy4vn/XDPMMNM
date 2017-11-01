@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/01/2017 22:54:05
+-- Date Created: 11/01/2017 23:20:12
 -- Generated from EDMX file: C:\Users\PC\Documents\XDPMMNM\XDPMMNM-sach\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -59,6 +59,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SachKhoDL]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[KhoDLs] DROP CONSTRAINT [FK_SachKhoDL];
 GO
+IF OBJECT_ID(N'[dbo].[FK_NXBNoNXB]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[NoNXBs] DROP CONSTRAINT [FK_NXBNoNXB];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -100,6 +103,9 @@ GO
 IF OBJECT_ID(N'[dbo].[KhoDLs]', 'U') IS NOT NULL
     DROP TABLE [dbo].[KhoDLs];
 GO
+IF OBJECT_ID(N'[dbo].[NoNXBs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[NoNXBs];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -136,8 +142,8 @@ CREATE TABLE [dbo].[Saches] (
 );
 GO
 
--- Creating table 'Phieunhaps1'
-CREATE TABLE [dbo].[Phieunhaps1] (
+-- Creating table 'Phieunhaps'
+CREATE TABLE [dbo].[Phieunhaps] (
     [IdPn] int IDENTITY(1,1) NOT NULL,
     [NgayNhap] datetime  NOT NULL,
     [NguoiGiao] nvarchar(max)  NOT NULL,
@@ -243,9 +249,9 @@ ADD CONSTRAINT [PK_Saches]
     PRIMARY KEY CLUSTERED ([IdSach] ASC);
 GO
 
--- Creating primary key on [IdPn] in table 'Phieunhaps1'
-ALTER TABLE [dbo].[Phieunhaps1]
-ADD CONSTRAINT [PK_Phieunhaps1]
+-- Creating primary key on [IdPn] in table 'Phieunhaps'
+ALTER TABLE [dbo].[Phieunhaps]
+ADD CONSTRAINT [PK_Phieunhaps]
     PRIMARY KEY CLUSTERED ([IdPn] ASC);
 GO
 
@@ -322,8 +328,8 @@ ON [dbo].[Saches]
     ([IdNXB]);
 GO
 
--- Creating foreign key on [IdNXB] in table 'Phieunhaps1'
-ALTER TABLE [dbo].[Phieunhaps1]
+-- Creating foreign key on [IdNXB] in table 'Phieunhaps'
+ALTER TABLE [dbo].[Phieunhaps]
 ADD CONSTRAINT [FK_NXBPhieunhap]
     FOREIGN KEY ([IdNXB])
     REFERENCES [dbo].[NXBs]
@@ -333,7 +339,7 @@ GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_NXBPhieunhap'
 CREATE INDEX [IX_FK_NXBPhieunhap]
-ON [dbo].[Phieunhaps1]
+ON [dbo].[Phieunhaps]
     ([IdNXB]);
 GO
 
@@ -341,7 +347,7 @@ GO
 ALTER TABLE [dbo].[CTPNs]
 ADD CONSTRAINT [FK_PhieunhapCTPN]
     FOREIGN KEY ([IdPn])
-    REFERENCES [dbo].[Phieunhaps1]
+    REFERENCES [dbo].[Phieunhaps]
         ([IdPn])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO

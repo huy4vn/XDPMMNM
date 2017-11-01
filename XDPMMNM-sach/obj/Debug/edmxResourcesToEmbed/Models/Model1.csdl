@@ -85,7 +85,7 @@
     <Property Name="SDT" Type="String" Nullable="false" />
     <NavigationProperty Name="Saches" Relationship="Model1.NXBSach" FromRole="NXB" ToRole="Sach" />
     <NavigationProperty Name="Phieunhaps" Relationship="Model1.NXBPhieunhap" FromRole="NXB" ToRole="Phieunhap" />
-    <NavigationProperty Name="NoNXB" Relationship="Model1.NXBNoNXB" FromRole="NXB" ToRole="NoNXB" />
+    <NavigationProperty Name="NoNXBs" Relationship="Model1.NXBNoNXB" FromRole="NXB" ToRole="NoNXB" />
   </EntityType>
   <EntityType Name="Daili">
     <Key>
@@ -378,14 +378,23 @@
   <EntityType Name="NoNXB">
     <Key>
       <PropertyRef Name="IdNXB" />
+      <PropertyRef Name="NgayNhap" />
     </Key>
-    <Property Name="IdNXB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <NavigationProperty Name="NXB" Relationship="Model1.NXBNoNXB" FromRole="NoNXB" ToRole="NXB" />
     <Property Name="NgayNhap" Type="DateTime" Nullable="false" />
-    <Property Name="TienNo" Type="Int32" Nullable="false" />
+    <Property Name="TienNo" Type="String" Nullable="false" />
+    <NavigationProperty Name="NXB" Relationship="Model1.NXBNoNXB" FromRole="NoNXB" ToRole="NXB" />
+    <Property Name="IdNXB" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="NXBNoNXB">
     <End Type="Model1.NXB" Role="NXB" Multiplicity="1" />
-    <End Type="Model1.NoNXB" Role="NoNXB" Multiplicity="1" />
+    <End Type="Model1.NoNXB" Role="NoNXB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NXB">
+        <PropertyRef Name="IdNXB" />
+      </Principal>
+      <Dependent Role="NoNXB">
+        <PropertyRef Name="IdNXB" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>

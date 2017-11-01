@@ -83,7 +83,6 @@
     <Property Name="TenNXB" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DiaChi" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SDT" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="NoNXB_IdNXB" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Dailis">
     <Key>
@@ -192,10 +191,11 @@
   <EntityType Name="NoNXBs">
     <Key>
       <PropertyRef Name="IdNXB" />
+      <PropertyRef Name="NgayNhap" />
     </Key>
-    <Property Name="IdNXB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NgayNhap" Type="datetime" Nullable="false" />
-    <Property Name="TienNo" Type="int" Nullable="false" />
+    <Property Name="TienNo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdNXB" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="NXBSach">
     <End Role="NXB" Type="Model1.Store.NXBs" Multiplicity="1" />
@@ -368,14 +368,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="NXBNoNXB">
-    <End Role="NXB" Type="Model1.Store.NXBs" Multiplicity="*" />
-    <End Role="NoNXB" Type="Model1.Store.NoNXBs" Multiplicity="1" />
+    <End Role="NXB" Type="Model1.Store.NXBs" Multiplicity="1" />
+    <End Role="NoNXB" Type="Model1.Store.NoNXBs" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="NoNXB">
+      <Principal Role="NXB">
         <PropertyRef Name="IdNXB" />
       </Principal>
-      <Dependent Role="NXB">
-        <PropertyRef Name="NoNXB_IdNXB" />
+      <Dependent Role="NoNXB">
+        <PropertyRef Name="IdNXB" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
