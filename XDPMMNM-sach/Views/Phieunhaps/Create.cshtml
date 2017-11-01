@@ -1,4 +1,4 @@
-﻿@model XDPMMNM_sach.Models.Phieunhap
+﻿@model XDPMMNM_sach.Models.PNvaCTPNmodel
 
 @{
     ViewBag.Title = "Create";
@@ -16,36 +16,73 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.NgayNhap, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.phieunhap.NgayNhap, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayNhap, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NgayNhap, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.phieunhap.NgayNhap, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.phieunhap.NgayNhap, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NguoiGiao, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.phieunhap.NguoiGiao, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NguoiGiao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NguoiGiao, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.phieunhap.NguoiGiao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.phieunhap.NguoiGiao, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdNXB, "IdNXB", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.phieunhap.IdNXB, "IdNXB", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdNXB", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IdNXB, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.phieunhap.IdNXB, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NguoiNhan, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.phieunhap.NguoiNhan, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NguoiNhan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NguoiNhan, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.phieunhap.NguoiNhan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.phieunhap.NguoiNhan, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-inline">
+            <h4>Thêm chi tiết phiếu nhập</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.LabelFor(model => model.ctpn.IdSach, "Tên sách")
+            <div class="form-group">
+                @Html.DropDownList("idsach", null, htmlAttributes: new { @class = "form-control", @id = "item" })
+                @Html.ValidationMessageFor(model => model.ctpn.IdSach, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.ctpn.SL, "Số lượng nhập")
+            <div class="form-group">
+                @Html.EditorFor(model => model.ctpn.SL, new { htmlAttributes = new { @class = "form-control", @id = "amount" } })
+                @Html.ValidationMessageFor(model => model.ctpn.SL, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <input type="button" id="btnAdd" class="btn btn-default" value="Add" />
+            </div>
+        </div>
+        <hr />
+        <table class="table" id="chitiet">
+            <tr>
+                <th>ID</th>
+                <th>ID Sách</th>
+                <th>Tên Sách</th>
+                <th>Số lượng nhập</th>
+                <th></th>
+            </tr>
+            @if (Model != null)
+            {
+                foreach (var ct in Model.phieunhap.CTPNs)
+                {
+                    
+                }
+            }
+        </table>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -60,5 +97,8 @@
 </div>
 
 @section Scripts {
+    
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/mycustomjquery")
 }

@@ -35,7 +35,6 @@
         <AssociationConnector Association="Model1.SachKhoDL" />
         <EntityTypeShape EntityType="Model1.NoNXB" Width="1.5" PointX="2.75" PointY="0.5" />
         <AssociationConnector Association="Model1.NXBNoNXB" />
-        <AssociationConnector Association="Model1.NXBNoNXB" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
