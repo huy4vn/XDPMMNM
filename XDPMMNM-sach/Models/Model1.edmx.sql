@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/01/2017 17:44:48
--- Generated from EDMX file: C:\Users\PC\Documents\Visual Studio 2015\Projects\XDPMMNM-sach\XDPMMNM-sach\XDPMMNM-sach\Models\Model1.edmx
+-- Date Created: 11/01/2017 21:36:10
+-- Generated from EDMX file: C:\Users\PC\Documents\XDPMMNM\XDPMMNM-sach\Models\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -53,6 +53,15 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_DailiCongno]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Congnoes] DROP CONSTRAINT [FK_DailiCongno];
 GO
+IF OBJECT_ID(N'[dbo].[FK_DailiKhoDL]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Dailis] DROP CONSTRAINT [FK_DailiKhoDL];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SachKhoDL]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[KhoDLs] DROP CONSTRAINT [FK_SachKhoDL];
+GO
+IF OBJECT_ID(N'[dbo].[FK_NXBNoNXB]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[NXBs] DROP CONSTRAINT [FK_NXBNoNXB];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -90,6 +99,12 @@ IF OBJECT_ID(N'[dbo].[CTBCDLs]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Congnoes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Congnoes];
+GO
+IF OBJECT_ID(N'[dbo].[KhoDLs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[KhoDLs];
+GO
+IF OBJECT_ID(N'[dbo].[NoNXBs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[NoNXBs];
 GO
 
 -- --------------------------------------------------
