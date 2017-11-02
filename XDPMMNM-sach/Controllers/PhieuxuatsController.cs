@@ -55,7 +55,11 @@ namespace XDPMMNM_sach.Controllers
             if (ModelState.IsValid)
             {
                 foreach (var i in ctpx)
+                {
                     phieuxuat.CTPXes.Add(i);
+                    KhoDL khodl = new KhoDL();
+                }
+
                 db.Phieuxuats.Add(phieuxuat);
                 db.SaveChanges();
                 return RedirectToAction("Index");

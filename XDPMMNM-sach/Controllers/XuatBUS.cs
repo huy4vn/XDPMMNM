@@ -27,6 +27,6 @@ namespace XDPMMNM_sach.Controllers
                 db.SaveChanges();
             }
         }
-       
+        //void CapnhatSLtrongKho(DateTime ngayghi,)
     }
 }
