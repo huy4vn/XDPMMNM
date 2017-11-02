@@ -171,10 +171,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DailisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NXBsController.cs" />
     <Compile Include="Controllers\PhieunhapsController.cs" />
+    <Compile Include="Controllers\PhieuxuatsController.cs" />
+    <Compile Include="Controllers\SachesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -232,6 +235,8 @@
     <Compile Include="Models\Phieuxuat.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PNvaCTPNmodel.cs" />
+    <Compile Include="Models\PXvaCTPXmodel.cs" />
     <Compile Include="Models\Sach.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -273,6 +278,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\mycustomjs.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -315,11 +321,21 @@
     <Content Include="Views\NXBs\Details.cshtml" />
     <Content Include="Views\NXBs\Edit.cshtml" />
     <Content Include="Views\NXBs\Index.cshtml" />
-    <Content Include="Views\Phieunhaps\Create.cshtml" />
-    <Content Include="Views\Phieunhaps\Delete.cshtml" />
-    <Content Include="Views\Phieunhaps\Details.cshtml" />
-    <Content Include="Views\Phieunhaps\Edit.cshtml" />
-    <Content Include="Views\Phieunhaps\Index.cshtml" />
+    <Content Include="Views\Phieuxuats\Create.cshtml" />
+    <Content Include="Views\Phieuxuats\Delete.cshtml" />
+    <Content Include="Views\Phieuxuats\Details.cshtml" />
+    <Content Include="Views\Phieuxuats\Edit.cshtml" />
+    <Content Include="Views\Phieuxuats\Index.cshtml" />
+    <Content Include="Views\Saches\Create.cshtml" />
+    <Content Include="Views\Saches\Delete.cshtml" />
+    <Content Include="Views\Saches\Details.cshtml" />
+    <Content Include="Views\Saches\Edit.cshtml" />
+    <Content Include="Views\Saches\Index.cshtml" />
+    <Content Include="Views\Dailis\Create.cshtml" />
+    <Content Include="Views\Dailis\Delete.cshtml" />
+    <Content Include="Views\Dailis\Details.cshtml" />
+    <Content Include="Views\Dailis\Edit.cshtml" />
+    <Content Include="Views\Dailis\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,14 +8,14 @@
       <End Role="NXB" EntitySet="NXBs" />
       <End Role="Sach" EntitySet="Saches" />
     </AssociationSet>
-    <EntitySet Name="Phieunhaps1" EntityType="Model1.Phieunhap" />
+    <EntitySet Name="Phieunhaps" EntityType="Model1.Phieunhap" />
     <EntitySet Name="CTPNs" EntityType="Model1.CTPN" />
     <AssociationSet Name="NXBPhieunhap" Association="Model1.NXBPhieunhap">
       <End Role="NXB" EntitySet="NXBs" />
-      <End Role="Phieunhap" EntitySet="Phieunhaps1" />
+      <End Role="Phieunhap" EntitySet="Phieunhaps" />
     </AssociationSet>
     <AssociationSet Name="PhieunhapCTPN" Association="Model1.PhieunhapCTPN">
-      <End Role="Phieunhap" EntitySet="Phieunhaps1" />
+      <End Role="Phieunhap" EntitySet="Phieunhaps" />
       <End Role="CTPN" EntitySet="CTPNs" />
     </AssociationSet>
     <AssociationSet Name="SachCTPN" Association="Model1.SachCTPN">
@@ -61,10 +61,6 @@
       <End Role="Congno" EntitySet="Congnoes" />
     </AssociationSet>
     <EntitySet Name="KhoDLs" EntityType="Model1.KhoDL" />
-    <AssociationSet Name="DailiKhoDL" Association="Model1.DailiKhoDL">
-      <End Role="Daili" EntitySet="Dailis" />
-      <End Role="KhoDL" EntitySet="KhoDLs" />
-    </AssociationSet>
     <AssociationSet Name="SachKhoDL" Association="Model1.SachKhoDL">
       <End Role="Sach" EntitySet="Saches" />
       <End Role="KhoDL" EntitySet="KhoDLs" />
@@ -73,6 +69,10 @@
     <AssociationSet Name="NXBNoNXB" Association="Model1.NXBNoNXB">
       <End Role="NXB" EntitySet="NXBs" />
       <End Role="NoNXB" EntitySet="NoNXBs" />
+    </AssociationSet>
+    <AssociationSet Name="DailiKhoDL" Association="Model1.DailiKhoDL">
+      <End Role="Daili" EntitySet="Dailis" />
+      <End Role="KhoDL" EntitySet="KhoDLs" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="NXB">
@@ -98,7 +98,7 @@
     <NavigationProperty Name="Phieuxuats" Relationship="Model1.DailiPhieuxuat" FromRole="Daili" ToRole="Phieuxuat" />
     <NavigationProperty Name="BaocaoDLs" Relationship="Model1.DailiBaocaoDL" FromRole="Daili" ToRole="BaocaoDL" />
     <NavigationProperty Name="Congnoes" Relationship="Model1.DailiCongno" FromRole="Daili" ToRole="Congno" />
-    <NavigationProperty Name="KhoDL" Relationship="Model1.DailiKhoDL" FromRole="Daili" ToRole="KhoDL" />
+    <NavigationProperty Name="KhoDLs" Relationship="Model1.DailiKhoDL" FromRole="Daili" ToRole="KhoDL" />
   </EntityType>
   <EntityType Name="Sach">
     <Key>
@@ -350,19 +350,15 @@
   </Association>
   <EntityType Name="KhoDL">
     <Key>
-      <PropertyRef Name="IdDL" />
       <PropertyRef Name="IdSach" />
+      <PropertyRef Name="IdDL" />
     </Key>
-    <Property Name="IdDL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <NavigationProperty Name="Daili" Relationship="Model1.DailiKhoDL" FromRole="KhoDL" ToRole="Daili" />
     <NavigationProperty Name="Sach" Relationship="Model1.SachKhoDL" FromRole="KhoDL" ToRole="Sach" />
     <Property Name="IdSach" Type="Int32" Nullable="false" />
     <Property Name="SL" Type="String" Nullable="false" />
+    <NavigationProperty Name="Daili" Relationship="Model1.DailiKhoDL" FromRole="KhoDL" ToRole="Daili" />
+    <Property Name="IdDL" Type="Int32" Nullable="false" />
   </EntityType>
-  <Association Name="DailiKhoDL">
-    <End Type="Model1.Daili" Role="Daili" Multiplicity="1" />
-    <End Type="Model1.KhoDL" Role="KhoDL" Multiplicity="1" />
-  </Association>
   <Association Name="SachKhoDL">
     <End Type="Model1.Sach" Role="Sach" Multiplicity="1" />
     <End Type="Model1.KhoDL" Role="KhoDL" Multiplicity="*" />
@@ -394,6 +390,18 @@
       </Principal>
       <Dependent Role="NoNXB">
         <PropertyRef Name="IdNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DailiKhoDL">
+    <End Type="Model1.Daili" Role="Daili" Multiplicity="1" />
+    <End Type="Model1.KhoDL" Role="KhoDL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Daili">
+        <PropertyRef Name="IdDL" />
+      </Principal>
+      <Dependent Role="KhoDL">
+        <PropertyRef Name="IdDL" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

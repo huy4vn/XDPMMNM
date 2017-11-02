@@ -33,9 +33,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Phieunhaps1">
+    <EntitySetMapping Name="Phieunhaps">
       <EntityTypeMapping TypeName="IsTypeOf(Model1.Phieunhap)">
-        <MappingFragment StoreEntitySet="Phieunhaps1">
+        <MappingFragment StoreEntitySet="Phieunhaps">
           <ScalarProperty Name="IdPn" ColumnName="IdPn" />
           <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
           <ScalarProperty Name="NguoiGiao" ColumnName="NguoiGiao" />
@@ -113,8 +113,8 @@
     <EntitySetMapping Name="KhoDLs">
       <EntityTypeMapping TypeName="IsTypeOf(Model1.KhoDL)">
         <MappingFragment StoreEntitySet="KhoDLs">
-          <ScalarProperty Name="IdDL" ColumnName="IdDL" />
           <ScalarProperty Name="IdSach" ColumnName="IdSach" />
+          <ScalarProperty Name="IdDL" ColumnName="IdDL" />
           <ScalarProperty Name="SL" ColumnName="SL" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -128,14 +128,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="DailiKhoDL" TypeName="Model1.DailiKhoDL" StoreEntitySet="Dailis">
-      <EndProperty Name="KhoDL">
-        <ScalarProperty Name="IdDL" ColumnName="KhoDL_IdDL" />
-        <ScalarProperty Name="IdSach" ColumnName="KhoDL_IdSach" />
-      </EndProperty>
-      <EndProperty Name="Daili">
-        <ScalarProperty Name="IdDL" ColumnName="IdDL" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>
