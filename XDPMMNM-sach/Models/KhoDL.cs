@@ -14,11 +14,11 @@ namespace XDPMMNM_sach.Models
     
     public partial class KhoDL
     {
-        public int IdDL { get; set; }
         public int IdSach { get; set; }
         public string SL { get; set; }
+        public int IdDL { get; set; }
     
-        public virtual Daili Daili { get; set; }
         public virtual Sach Sach { get; set; }
+        public virtual Daili Daili { get; set; }
     }
 }

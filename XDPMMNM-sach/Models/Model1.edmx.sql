@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/01/2017 23:20:12
+-- Date Created: 11/02/2017 10:32:36
 -- Generated from EDMX file: C:\Users\PC\Documents\XDPMMNM\XDPMMNM-sach\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -21,7 +21,7 @@ IF OBJECT_ID(N'[dbo].[FK_NXBSach]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Saches] DROP CONSTRAINT [FK_NXBSach];
 GO
 IF OBJECT_ID(N'[dbo].[FK_NXBPhieunhap]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Phieunhaps1] DROP CONSTRAINT [FK_NXBPhieunhap];
+    ALTER TABLE [dbo].[Phieunhaps] DROP CONSTRAINT [FK_NXBPhieunhap];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PhieunhapCTPN]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CTPNs] DROP CONSTRAINT [FK_PhieunhapCTPN];
@@ -53,14 +53,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_DailiCongno]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Congnoes] DROP CONSTRAINT [FK_DailiCongno];
 GO
-IF OBJECT_ID(N'[dbo].[FK_DailiKhoDL]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Dailis] DROP CONSTRAINT [FK_DailiKhoDL];
-GO
 IF OBJECT_ID(N'[dbo].[FK_SachKhoDL]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[KhoDLs] DROP CONSTRAINT [FK_SachKhoDL];
 GO
 IF OBJECT_ID(N'[dbo].[FK_NXBNoNXB]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[NoNXBs] DROP CONSTRAINT [FK_NXBNoNXB];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DailiKhoDL]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[KhoDLs] DROP CONSTRAINT [FK_DailiKhoDL];
 GO
 
 -- --------------------------------------------------
@@ -76,8 +76,8 @@ GO
 IF OBJECT_ID(N'[dbo].[Saches]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Saches];
 GO
-IF OBJECT_ID(N'[dbo].[Phieunhaps1]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Phieunhaps1];
+IF OBJECT_ID(N'[dbo].[Phieunhaps]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Phieunhaps];
 GO
 IF OBJECT_ID(N'[dbo].[CTPNs]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CTPNs];
@@ -125,9 +125,7 @@ CREATE TABLE [dbo].[Dailis] (
     [IdDL] int IDENTITY(1,1) NOT NULL,
     [TenDL] nvarchar(max)  NOT NULL,
     [DiaChi] nvarchar(max)  NOT NULL,
-    [SDT] nvarchar(max)  NOT NULL,
-    [KhoDL_IdDL] int  NOT NULL,
-    [KhoDL_IdSach] int  NOT NULL
+    [SDT] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -213,9 +211,9 @@ GO
 
 -- Creating table 'KhoDLs'
 CREATE TABLE [dbo].[KhoDLs] (
-    [IdDL] int IDENTITY(1,1) NOT NULL,
     [IdSach] int  NOT NULL,
-    [SL] nvarchar(max)  NOT NULL
+    [SL] nvarchar(max)  NOT NULL,
+    [IdDL] int  NOT NULL
 );
 GO
 
@@ -297,10 +295,10 @@ ADD CONSTRAINT [PK_Congnoes]
     PRIMARY KEY CLUSTERED ([Ngay] ASC);
 GO
 
--- Creating primary key on [IdDL], [IdSach] in table 'KhoDLs'
+-- Creating primary key on [IdSach], [IdDL] in table 'KhoDLs'
 ALTER TABLE [dbo].[KhoDLs]
 ADD CONSTRAINT [PK_KhoDLs]
-    PRIMARY KEY CLUSTERED ([IdDL], [IdSach] ASC);
+    PRIMARY KEY CLUSTERED ([IdSach], [IdDL] ASC);
 GO
 
 -- Creating primary key on [IdNXB], [NgayNhap] in table 'NoNXBs'
@@ -475,21 +473,6 @@ ON [dbo].[Congnoes]
     ([IdDL]);
 GO
 
--- Creating foreign key on [KhoDL_IdDL], [KhoDL_IdSach] in table 'Dailis'
-ALTER TABLE [dbo].[Dailis]
-ADD CONSTRAINT [FK_DailiKhoDL]
-    FOREIGN KEY ([KhoDL_IdDL], [KhoDL_IdSach])
-    REFERENCES [dbo].[KhoDLs]
-        ([IdDL], [IdSach])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_DailiKhoDL'
-CREATE INDEX [IX_FK_DailiKhoDL]
-ON [dbo].[Dailis]
-    ([KhoDL_IdDL], [KhoDL_IdSach]);
-GO
-
 -- Creating foreign key on [IdSach] in table 'KhoDLs'
 ALTER TABLE [dbo].[KhoDLs]
 ADD CONSTRAINT [FK_SachKhoDL]
@@ -499,12 +482,6 @@ ADD CONSTRAINT [FK_SachKhoDL]
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_SachKhoDL'
-CREATE INDEX [IX_FK_SachKhoDL]
-ON [dbo].[KhoDLs]
-    ([IdSach]);
-GO
-
 -- Creating foreign key on [IdNXB] in table 'NoNXBs'
 ALTER TABLE [dbo].[NoNXBs]
 ADD CONSTRAINT [FK_NXBNoNXB]
@@ -512,6 +489,21 @@ ADD CONSTRAINT [FK_NXBNoNXB]
     REFERENCES [dbo].[NXBs]
         ([IdNXB])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [IdDL] in table 'KhoDLs'
+ALTER TABLE [dbo].[KhoDLs]
+ADD CONSTRAINT [FK_DailiKhoDL]
+    FOREIGN KEY ([IdDL])
+    REFERENCES [dbo].[Dailis]
+        ([IdDL])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DailiKhoDL'
+CREATE INDEX [IX_FK_DailiKhoDL]
+ON [dbo].[KhoDLs]
+    ([IdDL]);
 GO
 
 -- --------------------------------------------------

@@ -31,10 +31,10 @@
         <EntityTypeShape EntityType="Model1.Congno" Width="1.5" PointX="14.25" PointY="2.875" />
         <AssociationConnector Association="Model1.DailiCongno" />
         <EntityTypeShape EntityType="Model1.KhoDL" Width="1.5" PointX="10.125" PointY="3.375" />
-        <AssociationConnector Association="Model1.DailiKhoDL" />
         <AssociationConnector Association="Model1.SachKhoDL" />
         <EntityTypeShape EntityType="Model1.NoNXB" Width="1.5" PointX="2.75" PointY="0.5" />
         <AssociationConnector Association="Model1.NXBNoNXB" />
+        <AssociationConnector Association="Model1.DailiKhoDL" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
