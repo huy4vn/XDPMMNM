@@ -28,7 +28,7 @@ namespace XDPMMNM_sach.Models
         public DbSet<NXB> NXBs { get; set; }
         public DbSet<Daili> Dailis { get; set; }
         public DbSet<Sach> Saches { get; set; }
-        public DbSet<Phieunhap> Phieunhaps1 { get; set; }
+        public DbSet<Phieunhap> Phieunhaps { get; set; }
         public DbSet<CTPN> CTPNs { get; set; }
         public DbSet<Phieuxuat> Phieuxuats { get; set; }
         public DbSet<CTPX> CTPXes { get; set; }

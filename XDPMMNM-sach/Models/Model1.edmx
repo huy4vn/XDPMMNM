@@ -9,7 +9,7 @@
     <EntitySet Name="NXBs" EntityType="Model1.Store.NXBs" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Dailis" EntityType="Model1.Store.Dailis" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Saches" EntityType="Model1.Store.Saches" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Phieunhaps1" EntityType="Model1.Store.Phieunhaps1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Phieunhaps" EntityType="Model1.Store.Phieunhaps" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CTPNs" EntityType="Model1.Store.CTPNs" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Phieuxuats" EntityType="Model1.Store.Phieuxuats" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CTPXes" EntityType="Model1.Store.CTPXes" store:Type="Tables" Schema="dbo" />
@@ -25,10 +25,10 @@
     </AssociationSet>
     <AssociationSet Name="NXBPhieunhap" Association="Model1.Store.NXBPhieunhap">
       <End Role="NXB" EntitySet="NXBs" />
-      <End Role="Phieunhap" EntitySet="Phieunhaps1" />
+      <End Role="Phieunhap" EntitySet="Phieunhaps" />
     </AssociationSet>
     <AssociationSet Name="PhieunhapCTPN" Association="Model1.Store.PhieunhapCTPN">
-      <End Role="Phieunhap" EntitySet="Phieunhaps1" />
+      <End Role="Phieunhap" EntitySet="Phieunhaps" />
       <End Role="CTPN" EntitySet="CTPNs" />
     </AssociationSet>
     <AssociationSet Name="SachCTPN" Association="Model1.Store.SachCTPN">
@@ -67,10 +67,6 @@
       <End Role="Daili" EntitySet="Dailis" />
       <End Role="Congno" EntitySet="Congnoes" />
     </AssociationSet>
-    <AssociationSet Name="DailiKhoDL" Association="Model1.Store.DailiKhoDL">
-      <End Role="Daili" EntitySet="Dailis" />
-      <End Role="KhoDL" EntitySet="KhoDLs" />
-    </AssociationSet>
     <AssociationSet Name="SachKhoDL" Association="Model1.Store.SachKhoDL">
       <End Role="Sach" EntitySet="Saches" />
       <End Role="KhoDL" EntitySet="KhoDLs" />
@@ -78,6 +74,10 @@
     <AssociationSet Name="NXBNoNXB" Association="Model1.Store.NXBNoNXB">
       <End Role="NXB" EntitySet="NXBs" />
       <End Role="NoNXB" EntitySet="NoNXBs" />
+    </AssociationSet>
+    <AssociationSet Name="DailiKhoDL" Association="Model1.Store.DailiKhoDL">
+      <End Role="Daili" EntitySet="Dailis" />
+      <End Role="KhoDL" EntitySet="KhoDLs" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="NXBs">
@@ -97,8 +97,6 @@
     <Property Name="TenDL" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DiaChi" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SDT" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="KhoDL_IdDL" Type="int" Nullable="false" />
-    <Property Name="KhoDL_IdSach" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Saches">
     <Key>
@@ -111,7 +109,7 @@
     <Property Name="GiaXuat" Type="int" Nullable="false" />
     <Property Name="IdNXB" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Phieunhaps1">
+  <EntityType Name="Phieunhaps">
     <Key>
       <PropertyRef Name="IdPn" />
     </Key>
@@ -186,12 +184,12 @@
   </EntityType>
   <EntityType Name="KhoDLs">
     <Key>
-      <PropertyRef Name="IdDL" />
       <PropertyRef Name="IdSach" />
+      <PropertyRef Name="IdDL" />
     </Key>
-    <Property Name="IdDL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdSach" Type="int" Nullable="false" />
     <Property Name="SL" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdDL" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="NoNXBs">
     <Key>
@@ -216,7 +214,7 @@
   </Association>
   <Association Name="NXBPhieunhap">
     <End Role="NXB" Type="Model1.Store.NXBs" Multiplicity="1" />
-    <End Role="Phieunhap" Type="Model1.Store.Phieunhaps1" Multiplicity="*" />
+    <End Role="Phieunhap" Type="Model1.Store.Phieunhaps" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NXB">
         <PropertyRef Name="IdNXB" />
@@ -227,7 +225,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="PhieunhapCTPN">
-    <End Role="Phieunhap" Type="Model1.Store.Phieunhaps1" Multiplicity="1" />
+    <End Role="Phieunhap" Type="Model1.Store.Phieunhaps" Multiplicity="1" />
     <End Role="CTPN" Type="Model1.Store.CTPNs" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Phieunhap">
@@ -346,20 +344,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="DailiKhoDL">
-    <End Role="Daili" Type="Model1.Store.Dailis" Multiplicity="*" />
-    <End Role="KhoDL" Type="Model1.Store.KhoDLs" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="KhoDL">
-        <PropertyRef Name="IdDL" />
-        <PropertyRef Name="IdSach" />
-      </Principal>
-      <Dependent Role="Daili">
-        <PropertyRef Name="KhoDL_IdDL" />
-        <PropertyRef Name="KhoDL_IdSach" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="SachKhoDL">
     <End Role="Sach" Type="Model1.Store.Saches" Multiplicity="1" />
     <End Role="KhoDL" Type="Model1.Store.KhoDLs" Multiplicity="*" />
@@ -384,6 +368,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="DailiKhoDL">
+    <End Role="Daili" Type="Model1.Store.Dailis" Multiplicity="1" />
+    <End Role="KhoDL" Type="Model1.Store.KhoDLs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Daili">
+        <PropertyRef Name="IdDL" />
+      </Principal>
+      <Dependent Role="KhoDL">
+        <PropertyRef Name="IdDL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -396,14 +392,14 @@
             <End Role="NXB" EntitySet="NXBs" />
             <End Role="Sach" EntitySet="Saches" />
           </AssociationSet>
-          <EntitySet Name="Phieunhaps1" EntityType="Model1.Phieunhap" />
+          <EntitySet Name="Phieunhaps" EntityType="Model1.Phieunhap" />
           <EntitySet Name="CTPNs" EntityType="Model1.CTPN" />
           <AssociationSet Name="NXBPhieunhap" Association="Model1.NXBPhieunhap">
             <End Role="NXB" EntitySet="NXBs" />
-            <End Role="Phieunhap" EntitySet="Phieunhaps1" />
+            <End Role="Phieunhap" EntitySet="Phieunhaps" />
           </AssociationSet>
           <AssociationSet Name="PhieunhapCTPN" Association="Model1.PhieunhapCTPN">
-            <End Role="Phieunhap" EntitySet="Phieunhaps1" />
+            <End Role="Phieunhap" EntitySet="Phieunhaps" />
             <End Role="CTPN" EntitySet="CTPNs" />
           </AssociationSet>
           <AssociationSet Name="SachCTPN" Association="Model1.SachCTPN">
@@ -449,10 +445,6 @@
             <End Role="Congno" EntitySet="Congnoes" />
           </AssociationSet>
           <EntitySet Name="KhoDLs" EntityType="Model1.KhoDL" />
-          <AssociationSet Name="DailiKhoDL" Association="Model1.DailiKhoDL">
-            <End Role="Daili" EntitySet="Dailis" />
-            <End Role="KhoDL" EntitySet="KhoDLs" />
-          </AssociationSet>
           <AssociationSet Name="SachKhoDL" Association="Model1.SachKhoDL">
             <End Role="Sach" EntitySet="Saches" />
             <End Role="KhoDL" EntitySet="KhoDLs" />
@@ -461,6 +453,10 @@
           <AssociationSet Name="NXBNoNXB" Association="Model1.NXBNoNXB">
             <End Role="NXB" EntitySet="NXBs" />
             <End Role="NoNXB" EntitySet="NoNXBs" />
+          </AssociationSet>
+          <AssociationSet Name="DailiKhoDL" Association="Model1.DailiKhoDL">
+            <End Role="Daili" EntitySet="Dailis" />
+            <End Role="KhoDL" EntitySet="KhoDLs" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="NXB">
@@ -486,7 +482,7 @@
           <NavigationProperty Name="Phieuxuats" Relationship="Model1.DailiPhieuxuat" FromRole="Daili" ToRole="Phieuxuat" />
           <NavigationProperty Name="BaocaoDLs" Relationship="Model1.DailiBaocaoDL" FromRole="Daili" ToRole="BaocaoDL" />
           <NavigationProperty Name="Congnoes" Relationship="Model1.DailiCongno" FromRole="Daili" ToRole="Congno" />
-          <NavigationProperty Name="KhoDL" Relationship="Model1.DailiKhoDL" FromRole="Daili" ToRole="KhoDL" />
+          <NavigationProperty Name="KhoDLs" Relationship="Model1.DailiKhoDL" FromRole="Daili" ToRole="KhoDL" />
         </EntityType>
         <EntityType Name="Sach">
           <Key>
@@ -738,19 +734,15 @@
         </Association>
         <EntityType Name="KhoDL">
           <Key>
-            <PropertyRef Name="IdDL" />
             <PropertyRef Name="IdSach" />
+            <PropertyRef Name="IdDL" />
           </Key>
-          <Property Name="IdDL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Daili" Relationship="Model1.DailiKhoDL" FromRole="KhoDL" ToRole="Daili" />
           <NavigationProperty Name="Sach" Relationship="Model1.SachKhoDL" FromRole="KhoDL" ToRole="Sach" />
           <Property Name="IdSach" Type="Int32" Nullable="false" />
           <Property Name="SL" Type="String" Nullable="false" />
+          <NavigationProperty Name="Daili" Relationship="Model1.DailiKhoDL" FromRole="KhoDL" ToRole="Daili" />
+          <Property Name="IdDL" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="DailiKhoDL">
-          <End Type="Model1.Daili" Role="Daili" Multiplicity="1" />
-          <End Type="Model1.KhoDL" Role="KhoDL" Multiplicity="1" />
-        </Association>
         <Association Name="SachKhoDL">
           <End Type="Model1.Sach" Role="Sach" Multiplicity="1" />
           <End Type="Model1.KhoDL" Role="KhoDL" Multiplicity="*" />
@@ -782,6 +774,18 @@
             </Principal>
             <Dependent Role="NoNXB">
               <PropertyRef Name="IdNXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DailiKhoDL">
+          <End Type="Model1.Daili" Role="Daili" Multiplicity="1" />
+          <End Type="Model1.KhoDL" Role="KhoDL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Daili">
+              <PropertyRef Name="IdDL" />
+            </Principal>
+            <Dependent Role="KhoDL">
+              <PropertyRef Name="IdDL" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -823,9 +827,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Phieunhaps1">
+    <EntitySetMapping Name="Phieunhaps">
       <EntityTypeMapping TypeName="IsTypeOf(Model1.Phieunhap)">
-        <MappingFragment StoreEntitySet="Phieunhaps1">
+        <MappingFragment StoreEntitySet="Phieunhaps">
           <ScalarProperty Name="IdPn" ColumnName="IdPn" />
           <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
           <ScalarProperty Name="NguoiGiao" ColumnName="NguoiGiao" />
@@ -903,8 +907,8 @@
     <EntitySetMapping Name="KhoDLs">
       <EntityTypeMapping TypeName="IsTypeOf(Model1.KhoDL)">
         <MappingFragment StoreEntitySet="KhoDLs">
-          <ScalarProperty Name="IdDL" ColumnName="IdDL" />
           <ScalarProperty Name="IdSach" ColumnName="IdSach" />
+          <ScalarProperty Name="IdDL" ColumnName="IdDL" />
           <ScalarProperty Name="SL" ColumnName="SL" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -918,15 +922,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="DailiKhoDL" TypeName="Model1.DailiKhoDL" StoreEntitySet="Dailis">
-      <EndProperty Name="KhoDL">
-        <ScalarProperty Name="IdDL" ColumnName="KhoDL_IdDL" />
-        <ScalarProperty Name="IdSach" ColumnName="KhoDL_IdSach" />
-      </EndProperty>
-      <EndProperty Name="Daili">
-        <ScalarProperty Name="IdDL" ColumnName="IdDL" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

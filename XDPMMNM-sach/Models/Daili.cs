@@ -19,6 +19,7 @@ namespace XDPMMNM_sach.Models
             this.Phieuxuats = new HashSet<Phieuxuat>();
             this.BaocaoDLs = new HashSet<BaocaoDL>();
             this.Congnoes = new HashSet<Congno>();
+            this.KhoDLs = new HashSet<KhoDL>();
         }
     
         public int IdDL { get; set; }
@@ -29,6 +30,6 @@ namespace XDPMMNM_sach.Models
         public virtual ICollection<Phieuxuat> Phieuxuats { get; set; }
         public virtual ICollection<BaocaoDL> BaocaoDLs { get; set; }
         public virtual ICollection<Congno> Congnoes { get; set; }
-        public virtual KhoDL KhoDL { get; set; }
+        public virtual ICollection<KhoDL> KhoDLs { get; set; }
     }
 }
