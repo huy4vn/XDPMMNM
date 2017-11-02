@@ -40,7 +40,7 @@ namespace XDPMMNM_sach.Controllers
         public ActionResult Create()
         {
             ViewBag.IdDL = new SelectList(db.Dailis, "IdDL", "TenDL");
-            ViewBag.idsach = new SelectList(db.Saches,"IdSach", "TenSach");
+            ViewBag.idsach= new SelectList(db.Saches, "IdSach", "TenSach");
             return View();
         }
 
@@ -49,10 +49,13 @@ namespace XDPMMNM_sach.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdPx,NgayXuat,NguoiNhan,IdDL")] Phieuxuat phieuxuat)
+        public ActionResult Create([Bind(Include = "IdPx,NgayXuat,NguoiNhan,IdDL")] Phieuxuat phieuxuat,
+                                    [Bind(Prefix = "ct")] CTPX[] ctpx)
         {
             if (ModelState.IsValid)
             {
+                foreach (var i in ctpx)
+                    phieuxuat.CTPXes.Add(i);
                 db.Phieuxuats.Add(phieuxuat);
                 db.SaveChanges();
                 return RedirectToAction("Index");

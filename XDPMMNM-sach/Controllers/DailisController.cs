@@ -82,7 +82,7 @@ namespace XDPMMNM_sach.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(daili).State = EntityState.Modified;
+                db.Entry(daili).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

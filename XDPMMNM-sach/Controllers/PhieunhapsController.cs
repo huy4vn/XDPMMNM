@@ -17,8 +17,8 @@ namespace XDPMMNM_sach.Controllers
         // GET: Phieunhaps
         public ActionResult Index()
         {
-            var phieunhaps1 = db.Phieunhaps.Include(p => p.NXB);
-            return View(phieunhaps1.ToList());
+            var phieunhaps = db.Phieunhaps.Include(p => p.NXB);
+            return View(phieunhaps.ToList());
         }
 
         // GET: Phieunhaps/Details/5

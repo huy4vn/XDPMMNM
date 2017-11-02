@@ -35,47 +35,49 @@
         <div class="form-group">
             @Html.LabelFor(model => model.phieuxuat.IdDL, "IdDL", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IdDL", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("phieuxuat.IdDL", ViewBag.IdDL as SelectList, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.phieuxuat.IdDL, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-inline">
-            <h4>Thêm chi tiết phiếu nhập</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+      
+    </div>
 
-            @Html.LabelFor(model => model.ctpx.IdSach, "Tên sách")
-            <div class="form-group">
-                @Html.DropDownList("IdSach", ViewBag.idsach as SelectList, htmlAttributes: new { @class = "form-control", @id = "item" })
-                @Html.ValidationMessageFor(model => model.ctpx.IdSach, "", new { @class = "text-danger" })
-            </div>
-
-            @Html.LabelFor(model => model.ctpx.SoLuong, "Số lượng xuất")
-            <div class="form-group">
-                @Html.EditorFor(model => model.ctpx.SoLuong, new { htmlAttributes = new { @class = "form-control", @id = "amount" } })
-                @Html.ValidationMessageFor(model => model.ctpx.SoLuong, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                <input type="button" id="btnAdd" class="btn btn-default" value="Add" />
-            </div>
-        </div>
+    <div class="form-inline">
+        <h4>Thêm chi tiết phiếu nhập</h4>
         <hr />
-        <table class="table" id="chitiet">
-            <tr>
-                <th>ID</th>
-                <th>ID Sách</th>
-                <th>Tên Sách</th>
-                <th>Số lượng nhập</th>
-                <th></th>
-            </tr>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        </table>
-        <hr />
+        @Html.LabelFor(model => model.ctpx.IdSach, "Tên sách")
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+            @Html.DropDownList("idsach", null, htmlAttributes: new { @class = "form-control", @id = "item" })
+            @Html.ValidationMessageFor(model => model.ctpx.IdSach, "", new { @class = "text-danger" })
+        </div>
+
+        @Html.LabelFor(model => model.ctpx.SoLuong, "Số lượng nhập")
+        <div class="form-group">
+            @Html.EditorFor(model => model.ctpx.SoLuong, new { htmlAttributes = new { @class = "form-control", @id = "amount" } })
+            @Html.ValidationMessageFor(model => model.ctpx.SoLuong, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <input type="button" id="btnAdd" class="btn btn-default" value="Add" />
+        </div>
+    </div>
+    <hr />
+    <table class="table" id="chitiet">
+        <tr>
+            
+            <th>ID Sách</th>
+            <th>Tên Sách</th>
+            <th>Số lượng nhập</th>
+            <th></th>
+        </tr>
+    
+    </table>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
 }
@@ -86,6 +88,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-@Scripts.Render("~/bundles/jqueryui")
-@Scripts.Render("~/bundles/mycustomjquery")
+    @Scripts.Render("~/bundles/mycustomjquery")
 }

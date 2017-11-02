@@ -7,7 +7,7 @@ $('#btnAdd').click(function () {
     dynamicId += 1
     $('#chitiet').append(
         "<tr>" +
-        "<td>" + dynamicId + "</td>" +
+        
         "<td>" + $('#item').val() + "</td> " +
         "<td>" + $("#item option:selected").text() + "</td>" +
         "<td>" + $('#amount').val() + "</td>" +
