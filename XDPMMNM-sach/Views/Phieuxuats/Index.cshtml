@@ -1,0 +1,52 @@
+﻿@model IEnumerable<XDPMMNM_sach.Models.Phieuxuat>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdPx)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayXuat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NguoiNhan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Daili.TenDL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdPx)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayXuat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NguoiNhan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Daili.TenDL)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdPx }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdPx }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdPx })
+        </td>
+    </tr>
+}
+
+</table>

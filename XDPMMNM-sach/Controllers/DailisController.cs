@@ -10,116 +10,107 @@ using XDPMMNM_sach.Models;
 
 namespace XDPMMNM_sach.Controllers
 {
-    public class PhieunhapsController : Controller
+    public class DailisController : Controller
     {
         private Model1Container db = new Model1Container();
 
-        // GET: Phieunhaps
+        // GET: Dailis
         public ActionResult Index()
         {
-            var phieunhaps = db.Phieunhaps.Include(p => p.NXB);
-            return View(phieunhaps.ToList());
+            return View(db.Dailis.ToList());
         }
 
-        // GET: Phieunhaps/Details/5
+        // GET: Dailis/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Phieunhap phieunhap = db.Phieunhaps.Find(id);
-            if (phieunhap == null)
+            Daili daili = db.Dailis.Find(id);
+            if (daili == null)
             {
                 return HttpNotFound();
             }
-            return View(phieunhap);
+            return View(daili);
         }
 
-        // GET: Phieunhaps/Create
+        // GET: Dailis/Create
         public ActionResult Create()
         {
-            ViewBag.IdNXB = new SelectList(db.NXBs, "IdNXB", "TenNXB");
-            ViewBag.idsach = new SelectList(db.Saches, "IdSach", "TenSach");
             return View();
         }
 
-        // POST: Phieunhaps/Create
+        // POST: Dailis/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdPn,NgayNhap,NguoiGiao,IdNXB,NguoiNhan")] Phieunhap phieunhap
-                                   , [Bind(Prefix = "ct")] CTPN[] ctpn)
+        public ActionResult Create([Bind(Include = "IdDL,TenDL,DiaChi,SDT")] Daili daili)
         {
             if (ModelState.IsValid)
             {
-                foreach (var i in ctpn) //code ctpn in here
-                    phieunhap.CTPNs.Add(i);
-                db.Phieunhaps.Add(phieunhap);
+                db.Dailis.Add(daili);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdNXB = new SelectList(db.NXBs, "IdNXB", "TenNXB", phieunhap.IdNXB);
-            return View(phieunhap);
+            return View(daili);
         }
 
-        // GET: Phieunhaps/Edit/5
+        // GET: Dailis/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Phieunhap phieunhap = db.Phieunhaps.Find(id);
-            if (phieunhap == null)
+            Daili daili = db.Dailis.Find(id);
+            if (daili == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdNXB = new SelectList(db.NXBs, "IdNXB", "TenNXB", phieunhap.IdNXB);
-            return View(phieunhap);
+            return View(daili);
         }
 
-        // POST: Phieunhaps/Edit/5
+        // POST: Dailis/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdPn,NgayNhap,NguoiGiao,IdNXB,NguoiNhan")] Phieunhap phieunhap)
+        public ActionResult Edit([Bind(Include = "IdDL,TenDL,DiaChi,SDT")] Daili daili)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(phieunhap).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(daili).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdNXB = new SelectList(db.NXBs, "IdNXB", "TenNXB", phieunhap.IdNXB);
-            return View(phieunhap);
+            return View(daili);
         }
 
-        // GET: Phieunhaps/Delete/5
+        // GET: Dailis/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Phieunhap phieunhap = db.Phieunhaps.Find(id);
-            if (phieunhap == null)
+            Daili daili = db.Dailis.Find(id);
+            if (daili == null)
             {
                 return HttpNotFound();
             }
-            return View(phieunhap);
+            return View(daili);
         }
 
-        // POST: Phieunhaps/Delete/5
+        // POST: Dailis/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Phieunhap phieunhap = db.Phieunhaps.Find(id);
-            db.Phieunhaps.Remove(phieunhap);
+            Daili daili = db.Dailis.Find(id);
+            db.Dailis.Remove(daili);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
