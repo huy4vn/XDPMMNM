@@ -15,7 +15,7 @@ namespace XDPMMNM_sach.Models
     public partial class NoNXB
     {
         public System.DateTime NgayNhap { get; set; }
-        public string TienNo { get; set; }
+        public int TienNo { get; set; }
         public int IdNXB { get; set; }
     
         public virtual NXB NXB { get; set; }

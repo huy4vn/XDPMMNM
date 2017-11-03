@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/02/2017 11:14:45
+-- Date Created: 11/03/2017 10:25:20
 -- Generated from EDMX file: C:\Users\PC\Documents\XDPMMNM\XDPMMNM-sach\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -201,7 +201,7 @@ GO
 
 -- Creating table 'Congnoes'
 CREATE TABLE [dbo].[Congnoes] (
-    [Ngay] int IDENTITY(1,1) NOT NULL,
+    [Ngay] datetime  NOT NULL,
     [IdDL] int  NOT NULL,
     [SLsachlay] int  NOT NULL,
     [Tongtienno] int  NOT NULL,
@@ -212,7 +212,7 @@ GO
 -- Creating table 'KhoDLs'
 CREATE TABLE [dbo].[KhoDLs] (
     [IdSach] int  NOT NULL,
-    [SL] nvarchar(max)  NOT NULL,
+    [SL] int  NOT NULL,
     [IdDL] int  NOT NULL
 );
 GO
@@ -220,7 +220,7 @@ GO
 -- Creating table 'NoNXBs'
 CREATE TABLE [dbo].[NoNXBs] (
     [NgayNhap] datetime  NOT NULL,
-    [TienNo] nvarchar(max)  NOT NULL,
+    [TienNo] int  NOT NULL,
     [IdNXB] int  NOT NULL
 );
 GO

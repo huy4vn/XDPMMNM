@@ -329,7 +329,7 @@
     <Key>
       <PropertyRef Name="Ngay" />
     </Key>
-    <Property Name="Ngay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ngay" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="Daili" Relationship="Model1.DailiCongno" FromRole="Congno" ToRole="Daili" />
     <Property Name="IdDL" Type="Int32" Nullable="false" />
     <Property Name="SLsachlay" Type="Int32" Nullable="false" />
@@ -355,7 +355,7 @@
     </Key>
     <NavigationProperty Name="Sach" Relationship="Model1.SachKhoDL" FromRole="KhoDL" ToRole="Sach" />
     <Property Name="IdSach" Type="Int32" Nullable="false" />
-    <Property Name="SL" Type="String" Nullable="false" />
+    <Property Name="SL" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Daili" Relationship="Model1.DailiKhoDL" FromRole="KhoDL" ToRole="Daili" />
     <Property Name="IdDL" Type="Int32" Nullable="false" />
   </EntityType>
@@ -377,7 +377,7 @@
       <PropertyRef Name="NgayNhap" />
     </Key>
     <Property Name="NgayNhap" Type="DateTime" Nullable="false" />
-    <Property Name="TienNo" Type="String" Nullable="false" />
+    <Property Name="TienNo" Type="Int32" Nullable="false" />
     <NavigationProperty Name="NXB" Relationship="Model1.NXBNoNXB" FromRole="NoNXB" ToRole="NXB" />
     <Property Name="IdNXB" Type="Int32" Nullable="false" />
   </EntityType>
