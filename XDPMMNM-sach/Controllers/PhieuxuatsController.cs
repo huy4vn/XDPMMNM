@@ -43,7 +43,7 @@ namespace XDPMMNM_sach.Controllers
             ViewBag.idsach= new SelectList(db.Saches, "IdSach", "TenSach");
             return View();
         }
-
+        
         // POST: Phieuxuats/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -54,22 +54,51 @@ namespace XDPMMNM_sach.Controllers
         {
             if (ModelState.IsValid)
             {
-                foreach (var i in ctpx)
+                if (ctpx == null)
                 {
-                    phieuxuat.CTPXes.Add(i);
-                    KhoDL khodaily = new KhoDL();
-                    khodaily.IdSach = i.IdSach;
-                    khodaily.IdDL = phieuxuat.IdDL;
-                    khodaily.SL = i.SoLuong;
+                    ModelState.AddModelError("", "Chưa thêm chi tiết phiếu nhập");
+                    ViewBag.IdDL = new SelectList(db.Dailis, "IdDL", "TenDL");
+                    ViewBag.idsach = new SelectList(db.Saches, "IdSach", "TenSach");
+                    return View();
                 }
+                if (!new XuatBUS().KTSL(ctpx))
+                {
+                    ModelState.AddModelError("", "Không đủ số lượng hoặc có sách chưa nhập về");
+                    ViewBag.IdDL = new SelectList(db.Dailis, "IdDL", "TenDL");
+                    ViewBag.idsach = new SelectList(db.Saches, "IdSach", "TenSach");
+                    PXvaCTPXmodel view1 = new PXvaCTPXmodel();
+                    phieuxuat.CTPXes = ctpx;
+                    view1.phieuxuat =phieuxuat;
+                    return View(view1);
+                }
+                else
+                {
+                    foreach (var i in ctpx)
+                    {
+                        //cap nhat sl sách trong kho
+                        new XuatBUS().CapnhatSLtrongKho(phieuxuat.NgayXuat, i.SoLuong, i.IdSach);
+                        //cap nhat kho dai li
+                        KhoDL khodaily = new KhoDL();
+                        khodaily.IdSach = i.IdSach;
+                        khodaily.IdDL = phieuxuat.IdDL;
+                        khodaily.SL = i.SoLuong;
+                        new XuatBUS().AddKhoDL(khodaily);
+                        phieuxuat.CTPXes.Add(i);
+                    }
 
-                db.Phieuxuats.Add(phieuxuat);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    db.Phieuxuats.Add(phieuxuat);
+                    new XuatBUS().Congno(phieuxuat);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
-            ViewBag.IdDL = new SelectList(db.Dailis, "IdDL", "TenDL", phieuxuat.IdDL);
-            return View(phieuxuat);
+           
+            ViewBag.IdDL = new SelectList(db.Dailis, "IdDL", "TenDL");
+            ViewBag.idsach = new SelectList(db.Saches, "IdSach", "TenSach");
+            PXvaCTPXmodel view2 = new PXvaCTPXmodel();
+            phieuxuat.CTPXes = ctpx;
+            view2.phieuxuat = phieuxuat;
+            return View(view2);
         }
 
         // GET: Phieuxuats/Edit/5
