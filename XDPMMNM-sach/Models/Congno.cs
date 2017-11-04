@@ -14,7 +14,7 @@ namespace XDPMMNM_sach.Models
     
     public partial class Congno
     {
-        public int Ngay { get; set; }
+        public System.DateTime Ngay { get; set; }
         public int IdDL { get; set; }
         public int SLsachlay { get; set; }
         public int Tongtienno { get; set; }
