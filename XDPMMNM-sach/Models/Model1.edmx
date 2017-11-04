@@ -133,7 +133,7 @@
       <PropertyRef Name="IdPx" />
     </Key>
     <Property Name="IdPx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NgayXuat" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NgayXuat" Type="datetime" Nullable="false" />
     <Property Name="NguoiNhan" Type="nvarchar(max)" Nullable="false" />
     <Property Name="IdDL" Type="int" Nullable="false" />
   </EntityType>
@@ -175,6 +175,7 @@
   <EntityType Name="Congnoes">
     <Key>
       <PropertyRef Name="Ngay" />
+      <PropertyRef Name="IdDL" />
     </Key>
     <Property Name="Ngay" Type="datetime" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdDL" Type="int" Nullable="false" />
@@ -577,7 +578,7 @@
             <PropertyRef Name="IdPx" />
           </Key>
           <Property Name="IdPx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NgayXuat" Type="String" Nullable="false" />
+          <Property Name="NgayXuat" Type="DateTime" Nullable="false" />
           <Property Name="NguoiNhan" Type="String" Nullable="false" />
           <NavigationProperty Name="CTPXes" Relationship="Model1.PhieuxuatCTPX" FromRole="Phieuxuat" ToRole="CTPX" />
           <NavigationProperty Name="Daili" Relationship="Model1.DailiPhieuxuat" FromRole="Phieuxuat" ToRole="Daili" />
@@ -712,6 +713,7 @@
         <EntityType Name="Congno">
           <Key>
             <PropertyRef Name="Ngay" />
+            <PropertyRef Name="IdDL" />
           </Key>
           <Property Name="Ngay" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Daili" Relationship="Model1.DailiCongno" FromRole="Congno" ToRole="Daili" />

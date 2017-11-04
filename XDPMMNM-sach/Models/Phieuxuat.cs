@@ -20,7 +20,7 @@ namespace XDPMMNM_sach.Models
         }
     
         public int IdPx { get; set; }
-        public string NgayXuat { get; set; }
+        public System.DateTime NgayXuat { get; set; }
         public string NguoiNhan { get; set; }
         public int IdDL { get; set; }
     
