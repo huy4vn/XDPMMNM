@@ -25,7 +25,8 @@ namespace XDPMMNM_sach
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/datepicker.css"));
             bundles.Add(new ScriptBundle("~/bundles/mycustomjquery")
                    .Include("~/Scripts/mycustomjs.js"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryui")
