@@ -9,10 +9,6 @@ namespace XDPMMNM_sach.Models
     {
         public Phieunhap phieunhap { get; set; }
         public CTPN ctpn { get; set; }
-        public PNvaCTPNmodel()
-        {
-            this.phieunhap = new Phieunhap();
-            this.ctpn = new CTPN();
-        }
+        
     }
 }

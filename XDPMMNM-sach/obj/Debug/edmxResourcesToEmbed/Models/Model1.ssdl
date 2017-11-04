@@ -121,7 +121,7 @@
     </Key>
     <Property Name="IdPn" Type="int" Nullable="false" />
     <Property Name="IdSach" Type="int" Nullable="false" />
-    <Property Name="SL" Type="int" Nullable="false" />
+    <Property Name="SoLuong" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Phieuxuats">
     <Key>

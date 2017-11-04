@@ -49,7 +49,7 @@
         <MappingFragment StoreEntitySet="CTPNs">
           <ScalarProperty Name="IdPn" ColumnName="IdPn" />
           <ScalarProperty Name="IdSach" ColumnName="IdSach" />
-          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -40,12 +40,13 @@ namespace XDPMMNM_sach.Controllers
         public ActionResult Create()
         {
             List<NXB> nxb = db.NXBs.ToList();
-            nxb.Add(new NXB(0, "Vui lòng chọn NXB"));
+            NXB a = new NXB();
+            a.IdNXB = 0;
+            a.TenNXB = "Vui lòng chọn NXB";
+            nxb.Add(a);
             ViewBag.IdNXB = new SelectList(nxb,"IdNXB","TenNXB");
-            ViewBag.idsach = new SelectList(db.Saches.Where(c=>c.IdNXB==0),"IdSachs","TenSach");
-            PNvaCTPNmodel pn = new PNvaCTPNmodel();
-            pn.phieunhap.NgayNhap = DateTime.Now;
-            return View(pn);
+            ViewBag.idsach = new SelectList(db.Saches,"IdSach","TenSach");
+            return View();
         }
         [HttpPost]
         public ActionResult fillSach(int nxbId)
@@ -65,24 +66,25 @@ namespace XDPMMNM_sach.Controllers
         {
             if (ModelState.IsValid)
             {
+                phieunhap.NgayNhap = DateTime.Today;
                 NoNXB no = new NoNXB();
+                Kho kho = new Kho();
+                //tao dl ao
                 no.NgayNhap = phieunhap.NgayNhap;
                 no.IdNXB = phieunhap.IdNXB;
+                kho.NgayGhi = phieunhap.NgayNhap;
+
                 foreach (var i in ctpn) //code ctpn in here
                 {
                     Sach sach = db.Saches.Find(i.IdSach);
-                    no.TienNo = i.SL * sach.GiaNhap;
-                    NoNXB olditem = db.NoNXBs.Find(no.IdNXB);
+                    kho.IdSach = sach.IdSach;
+                    kho.SL = i.SoLuong;
+                    no.TienNo = i.SoLuong * sach.GiaNhap;
+                    UpdateNo(no);
+                    UpdateKho(kho);
                     phieunhap.CTPNs.Add(i);
-                    if (olditem!= null)
-                    {
-                        olditem.TienNo = olditem.TienNo + no.TienNo;
-                        db.Entry(olditem).State = System.Data.Entity.EntityState.Modified;
-                    }
-                    else
-                    {
-                        db.NoNXBs.Add(no);
-                    }
+                    db.SaveChanges();    
+
                 }
                 db.Phieunhaps.Add(phieunhap);
                 db.SaveChanges();
@@ -92,7 +94,31 @@ namespace XDPMMNM_sach.Controllers
             ViewBag.IdNXB = new SelectList(db.NXBs, "IdNXB", "TenNXB", phieunhap.IdNXB);
             return View(phieunhap);
         }
-
+        private void UpdateKho(Kho ct)
+        {
+            if (db.Khoes.Any(c => c.IdSach == ct.IdSach))
+            {
+                Kho kho = db.Khoes.Where(c => c.IdSach == ct.IdSach).FirstOrDefault();
+                kho.SL = kho.SL + ct.SL;
+            }
+            else
+            {
+                db.Khoes.Add(ct);
+            }
+        }
+        private void UpdateNo(NoNXB no)
+        {
+            if (db.NoNXBs.Any(o => o.IdNXB == no.IdNXB))
+            {
+                NoNXB olditem = db.NoNXBs.Where(c=>c.IdNXB==no.IdNXB).FirstOrDefault();
+                olditem.TienNo = olditem.TienNo + no.TienNo;
+                db.Entry(olditem).State = System.Data.Entity.EntityState.Modified;
+            }
+            else
+            {
+                db.NoNXBs.Add(no);
+            }
+        }
         // GET: Phieunhaps/Edit/5
         public ActionResult Edit(int? id)
         {

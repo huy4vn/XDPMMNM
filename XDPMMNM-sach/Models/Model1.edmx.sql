@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/03/2017 10:25:20
--- Generated from EDMX file: C:\Users\PC\Documents\XDPMMNM\XDPMMNM-sach\Models\Model1.edmx
+-- Date Created: 11/04/2017 13:23:17
+-- Generated from EDMX file: C:\Users\MyPC\Documents\Visual Studio 2015\Projects\XNPM\XDPMMNM-sach\Models\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -154,7 +154,7 @@ GO
 CREATE TABLE [dbo].[CTPNs] (
     [IdPn] int  NOT NULL,
     [IdSach] int  NOT NULL,
-    [SL] int  NOT NULL
+    [SoLuong] int  NOT NULL
 );
 GO
 

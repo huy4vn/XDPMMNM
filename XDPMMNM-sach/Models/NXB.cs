@@ -20,11 +20,6 @@ namespace XDPMMNM_sach.Models
             this.Phieunhaps = new HashSet<Phieunhap>();
             this.NoNXBs = new HashSet<NoNXB>();
         }
-        public NXB(int id,string ten)
-        {
-            this.IdNXB = id;
-            this.TenNXB = ten;
-        }
     
         public int IdNXB { get; set; }
         public string TenNXB { get; set; }
