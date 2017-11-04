@@ -78,6 +78,7 @@ namespace XDPMMNM_sach.Controllers
                 a.Tongtienno = tongtien;
                 a.Tongtiendatra = 0;
                 db.Congnoes.Add(a);
+                List<Congno> list=db.Congnoes.ToList();
 
             }
             else if(a.Ngay.Date == px.NgayXuat.Date)//cùng ngay thi update lại

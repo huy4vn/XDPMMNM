@@ -87,7 +87,7 @@ namespace XDPMMNM_sach.Controllers
                     }
 
                     db.Phieuxuats.Add(phieuxuat);
-                    //new XuatBUS().Congno(phieuxuat);
+                    new XuatBUS().Congno(phieuxuat);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }

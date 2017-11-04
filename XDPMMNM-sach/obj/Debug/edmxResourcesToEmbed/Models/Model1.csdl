@@ -330,7 +330,7 @@
       <PropertyRef Name="Ngay" />
       <PropertyRef Name="IdDL" />
     </Key>
-    <Property Name="Ngay" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ngay" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
     <NavigationProperty Name="Daili" Relationship="Model1.DailiCongno" FromRole="Congno" ToRole="Daili" />
     <Property Name="IdDL" Type="Int32" Nullable="false" />
     <Property Name="SLsachlay" Type="Int32" Nullable="false" />

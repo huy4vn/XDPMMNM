@@ -177,7 +177,7 @@
       <PropertyRef Name="Ngay" />
       <PropertyRef Name="IdDL" />
     </Key>
-    <Property Name="Ngay" Type="datetime" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ngay" Type="datetime" StoreGeneratedPattern="None" Nullable="false" />
     <Property Name="IdDL" Type="int" Nullable="false" />
     <Property Name="SLsachlay" Type="int" Nullable="false" />
     <Property Name="Tongtienno" Type="int" Nullable="false" />
@@ -715,7 +715,7 @@
             <PropertyRef Name="Ngay" />
             <PropertyRef Name="IdDL" />
           </Key>
-          <Property Name="Ngay" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ngay" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <NavigationProperty Name="Daili" Relationship="Model1.DailiCongno" FromRole="Congno" ToRole="Daili" />
           <Property Name="IdDL" Type="Int32" Nullable="false" />
           <Property Name="SLsachlay" Type="Int32" Nullable="false" />
