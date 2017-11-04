@@ -23,8 +23,8 @@ $("#chitiet").on('click', '.btn.btn-danger.btnDelete', function () {
     $(this).closest('tr').remove();
 });
 
-$(function () { // will trigger when the document is ready
-    $('.datepicker').datepicker({ dateFormat: 'dd-mm-yy' }); //Initialise any date pickers
-});
+$( function() {
+    $( "#datepicker" ).datepicker();
+  } );
 
 

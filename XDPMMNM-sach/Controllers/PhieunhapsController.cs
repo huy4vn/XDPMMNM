@@ -66,7 +66,7 @@ namespace XDPMMNM_sach.Controllers
         {
             if (ModelState.IsValid)
             {
-                phieunhap.NgayNhap = DateTime.Today;
+                //phieunhap.NgayNhap = DateTime.Today;
                 NoNXB no = new NoNXB();
                 Kho kho = new Kho();
                 //tao dl ao
@@ -96,9 +96,28 @@ namespace XDPMMNM_sach.Controllers
         }
         private void UpdateKho(Kho ct)
         {
+            if (db.Khoes.Any(c => c.NgayGhi == ct.NgayGhi)){
+                UpdateKhoCungNgay(ct);
+            }
+            else
+            {
+                UpdateKhoKhacNgay(ct);
+            }
+        }
+        private void UpdateKhoKhacNgay(Kho ct)
+        {
             if (db.Khoes.Any(c => c.IdSach == ct.IdSach))
             {
-                Kho kho = db.Khoes.Where(c => c.IdSach == ct.IdSach).FirstOrDefault();
+                Kho kho = db.Khoes.OrderByDescending(c => c.IdSach == ct.IdSach).FirstOrDefault();
+                ct.SL = kho.SL + ct.SL;
+            }
+                db.Khoes.Add(ct);
+        }
+        private void UpdateKhoCungNgay(Kho ct)
+        {
+            if (db.Khoes.Any(c => c.IdSach == ct.IdSach && c.NgayGhi==ct.NgayGhi))
+            {
+                Kho kho = db.Khoes.Where(c => c.IdSach == ct.IdSach && c.NgayGhi==ct.NgayGhi).FirstOrDefault();
                 kho.SL = kho.SL + ct.SL;
             }
             else

@@ -29,6 +29,11 @@ namespace XDPMMNM_sach
                       "~/Content/datepicker.css"));
             bundles.Add(new ScriptBundle("~/bundles/mycustomjquery")
                    .Include("~/Scripts/mycustomjs.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui")
+   .Include("~/Scripts/jquery-ui-1.12.1.js"));
+
+            bundles.Add(new StyleBundle("~/Content/jqueryui")
+               .Include("~/Content/jquery-ui.css"));
         }
     }
 }

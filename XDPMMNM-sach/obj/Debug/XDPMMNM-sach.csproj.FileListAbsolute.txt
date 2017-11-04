@@ -133,6 +133,6 @@ C:\Users\MyPC\Documents\Visual Studio 2015\Projects\XNPM\XDPMMNM-sach\bin\Micros
 C:\Users\MyPC\Documents\Visual Studio 2015\Projects\XNPM\XDPMMNM-sach\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\MyPC\Documents\Visual Studio 2015\Projects\XNPM\XDPMMNM-sach\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\MyPC\Documents\Visual Studio 2015\Projects\XNPM\XDPMMNM-sach\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\MyPC\Documents\Visual Studio 2015\Projects\XNPM\XDPMMNM-sach\obj\Debug\XDPMMNM-sach.csprojResolveAssemblyReference.cache
 C:\Users\MyPC\Documents\Visual Studio 2015\Projects\XNPM\XDPMMNM-sach\obj\Debug\XDPMMNM-sach.dll
 C:\Users\MyPC\Documents\Visual Studio 2015\Projects\XNPM\XDPMMNM-sach\obj\Debug\XDPMMNM-sach.pdb
+C:\Users\MyPC\Documents\Visual Studio 2015\Projects\XNPM\XDPMMNM-sach\obj\Debug\XDPMMNM-sach.csprojResolveAssemblyReference.cache

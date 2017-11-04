@@ -31,9 +31,8 @@ namespace XDPMMNM_sach.Controllers
         {          
             foreach (var i in ctpx)
             {
-                var a = (from c in db.Khoes where c.IdSach == i.IdSach select c).DefaultIfEmpty().ToList();
-                if (a[a.Count - 1] == null) return false;
-                if (a[a.Count-1].SL - i.SoLuong < 0) return false;
+                Kho a = db.Khoes.OrderByDescending(c => c.IdSach == i.IdSach).FirstOrDefault();
+                if (a.SL - i.SoLuong < 0) return false;
             }
             return true;
         }
@@ -69,32 +68,28 @@ namespace XDPMMNM_sach.Controllers
                 tongsl += i.SoLuong;
             }
 
-            var query = (from c in db.Congnoes where c.IdDL == px.IdDL select c).DefaultIfEmpty().ToList();
-            var a = query[query.Count - 1];
-            if (a.Ngay.Date == px.NgayXuat.Date)//cùng ngay thi update lại
+            Congno a = db.Congnoes.OrderByDescending(c => c.IdDL == px.IdDL).FirstOrDefault();
+            if (a == null || a.Ngay.Date != px.NgayXuat.Date)
+            {
+                a = new Congno();
+                a.Ngay = px.NgayXuat;
+                a.IdDL = px.IdDL;
+                a.SLsachlay = tongsl;
+                a.Tongtienno = tongtien;
+                a.Tongtiendatra = 0;
+                db.Congnoes.Add(a);
+
+            }
+            else if(a.Ngay.Date == px.NgayXuat.Date)//cùng ngay thi update lại
             {
 
                 a.SLsachlay += tongsl;
                 a.Tongtienno += tongtien;
-                db.Entry(query).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                db.Entry(a).State = System.Data.Entity.EntityState.Modified;
+                
 
             }
-            else
-            if (a==null || a.Ngay.Date!=px.NgayXuat.Date)
-            {
-                Congno cn = new Congno();
-                cn.Ngay = px.NgayXuat.Date;
-                cn.IdDL = px.IdDL;
-                cn.SLsachlay = tongsl;
-                cn.Tongtienno = tongtien;
-                cn.Tongtiendatra = 0;
-                db.Congnoes.Add(cn);
-                db.SaveChanges();
-
-            }
-            
-            
+            db.SaveChanges();
         }
     }
 }

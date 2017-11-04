@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/04/2017 13:23:17
+-- Date Created: 11/04/2017 23:03:21
 -- Generated from EDMX file: C:\Users\MyPC\Documents\Visual Studio 2015\Projects\XNPM\XDPMMNM-sach\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -161,7 +161,7 @@ GO
 -- Creating table 'Phieuxuats'
 CREATE TABLE [dbo].[Phieuxuats] (
     [IdPx] int IDENTITY(1,1) NOT NULL,
-    [NgayXuat] nvarchar(max)  NOT NULL,
+    [NgayXuat] datetime  NOT NULL,
     [NguoiNhan] nvarchar(max)  NOT NULL,
     [IdDL] int  NOT NULL
 );
@@ -289,10 +289,10 @@ ADD CONSTRAINT [PK_CTBCDLs]
     PRIMARY KEY CLUSTERED ([IdBC], [IdSach] ASC);
 GO
 
--- Creating primary key on [Ngay] in table 'Congnoes'
+-- Creating primary key on [Ngay], [IdDL] in table 'Congnoes'
 ALTER TABLE [dbo].[Congnoes]
 ADD CONSTRAINT [PK_Congnoes]
-    PRIMARY KEY CLUSTERED ([Ngay] ASC);
+    PRIMARY KEY CLUSTERED ([Ngay], [IdDL] ASC);
 GO
 
 -- Creating primary key on [IdSach], [IdDL] in table 'KhoDLs'
