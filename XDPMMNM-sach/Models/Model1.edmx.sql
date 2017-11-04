@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/04/2017 21:01:04
--- Generated from EDMX file: C:\Users\PC\Documents\XDPMMNM\XDPMMNM-sach\Models\Model1.edmx
+-- Date Created: 11/04/2017 13:23:17
+-- Generated from EDMX file: C:\Users\MyPC\Documents\Visual Studio 2015\Projects\XNPM\XDPMMNM-sach\Models\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -154,14 +154,14 @@ GO
 CREATE TABLE [dbo].[CTPNs] (
     [IdPn] int  NOT NULL,
     [IdSach] int  NOT NULL,
-    [SL] int  NOT NULL
+    [SoLuong] int  NOT NULL
 );
 GO
 
 -- Creating table 'Phieuxuats'
 CREATE TABLE [dbo].[Phieuxuats] (
     [IdPx] int IDENTITY(1,1) NOT NULL,
-    [NgayXuat] datetime  NOT NULL,
+    [NgayXuat] nvarchar(max)  NOT NULL,
     [NguoiNhan] nvarchar(max)  NOT NULL,
     [IdDL] int  NOT NULL
 );
@@ -289,10 +289,10 @@ ADD CONSTRAINT [PK_CTBCDLs]
     PRIMARY KEY CLUSTERED ([IdBC], [IdSach] ASC);
 GO
 
--- Creating primary key on [Ngay], [IdDL] in table 'Congnoes'
+-- Creating primary key on [Ngay] in table 'Congnoes'
 ALTER TABLE [dbo].[Congnoes]
 ADD CONSTRAINT [PK_Congnoes]
-    PRIMARY KEY CLUSTERED ([Ngay], [IdDL] ASC);
+    PRIMARY KEY CLUSTERED ([Ngay] ASC);
 GO
 
 -- Creating primary key on [IdSach], [IdDL] in table 'KhoDLs'

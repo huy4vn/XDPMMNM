@@ -150,7 +150,7 @@
     <Property Name="IdPn" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Sach" Relationship="Model1.SachCTPN" FromRole="CTPN" ToRole="Sach" />
     <Property Name="IdSach" Type="Int32" Nullable="false" />
-    <Property Name="SL" Type="Int32" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="NXBPhieunhap">
     <End Type="Model1.NXB" Role="NXB" Multiplicity="1" />

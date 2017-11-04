@@ -9,5 +9,6 @@ namespace XDPMMNM_sach.Models
     {
         public Phieunhap phieunhap { get; set; }
         public CTPN ctpn { get; set; }
+        
     }
 }

@@ -16,7 +16,7 @@ namespace XDPMMNM_sach.Models
     {
         public int IdPn { get; set; }
         public int IdSach { get; set; }
-        public int SL { get; set; }
+        public int SoLuong { get; set; }
     
         public virtual Phieunhap Phieunhap { get; set; }
         public virtual Sach Sach { get; set; }
