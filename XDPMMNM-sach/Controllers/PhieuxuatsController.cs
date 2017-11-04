@@ -57,7 +57,10 @@ namespace XDPMMNM_sach.Controllers
                 foreach (var i in ctpx)
                 {
                     phieuxuat.CTPXes.Add(i);
-                    KhoDL khodl = new KhoDL();
+                    KhoDL khodaily = new KhoDL();
+                    khodaily.IdSach = i.IdSach;
+                    khodaily.IdDL = phieuxuat.IdDL;
+                    khodaily.SL = i.SoLuong;
                 }
 
                 db.Phieuxuats.Add(phieuxuat);
