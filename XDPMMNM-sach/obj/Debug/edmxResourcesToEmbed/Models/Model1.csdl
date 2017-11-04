@@ -80,9 +80,9 @@
       <PropertyRef Name="IdNXB" />
     </Key>
     <Property Name="IdNXB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenNXB" Type="String" Nullable="false" />
-    <Property Name="DiaChi" Type="String" Nullable="false" />
-    <Property Name="SDT" Type="String" Nullable="false" />
+    <Property Name="TenNXB" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="SDT" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Saches" Relationship="Model1.NXBSach" FromRole="NXB" ToRole="Sach" />
     <NavigationProperty Name="Phieunhaps" Relationship="Model1.NXBPhieunhap" FromRole="NXB" ToRole="Phieunhap" />
     <NavigationProperty Name="NoNXBs" Relationship="Model1.NXBNoNXB" FromRole="NXB" ToRole="NoNXB" />
@@ -92,9 +92,9 @@
       <PropertyRef Name="IdDL" />
     </Key>
     <Property Name="IdDL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenDL" Type="String" Nullable="false" />
-    <Property Name="DiaChi" Type="String" Nullable="false" />
-    <Property Name="SDT" Type="String" Nullable="false" />
+    <Property Name="TenDL" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="SDT" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Phieuxuats" Relationship="Model1.DailiPhieuxuat" FromRole="Daili" ToRole="Phieuxuat" />
     <NavigationProperty Name="BaocaoDLs" Relationship="Model1.DailiBaocaoDL" FromRole="Daili" ToRole="BaocaoDL" />
     <NavigationProperty Name="Congnoes" Relationship="Model1.DailiCongno" FromRole="Daili" ToRole="Congno" />
@@ -105,8 +105,8 @@
       <PropertyRef Name="IdSach" />
     </Key>
     <Property Name="IdSach" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenSach" Type="String" Nullable="false" />
-    <Property Name="TacGia" Type="String" Nullable="false" />
+    <Property Name="TenSach" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="TacGia" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="GiaNhap" Type="Int32" Nullable="false" />
     <Property Name="GiaXuat" Type="Int32" Nullable="false" />
     <NavigationProperty Name="NXB" Relationship="Model1.NXBSach" FromRole="Sach" ToRole="NXB" />
@@ -134,12 +134,12 @@
       <PropertyRef Name="IdPn" />
     </Key>
     <Property Name="IdPn" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NgayNhap" Type="DateTime" Nullable="false" />
-    <Property Name="NguoiGiao" Type="String" Nullable="false" />
+    <Property Name="NgayNhap" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NguoiGiao" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="NXB" Relationship="Model1.NXBPhieunhap" FromRole="Phieunhap" ToRole="NXB" />
     <Property Name="IdNXB" Type="Int32" Nullable="false" />
     <NavigationProperty Name="CTPNs" Relationship="Model1.PhieunhapCTPN" FromRole="Phieunhap" ToRole="CTPN" />
-    <Property Name="NguoiNhan" Type="String" Nullable="false" />
+    <Property Name="NguoiNhan" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
   </EntityType>
   <EntityType Name="CTPN">
     <Key>
@@ -193,8 +193,8 @@
       <PropertyRef Name="IdPx" />
     </Key>
     <Property Name="IdPx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NgayXuat" Type="String" Nullable="false" />
-    <Property Name="NguoiNhan" Type="String" Nullable="false" />
+    <Property Name="NgayXuat" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="NguoiNhan" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="CTPXes" Relationship="Model1.PhieuxuatCTPX" FromRole="Phieuxuat" ToRole="CTPX" />
     <NavigationProperty Name="Daili" Relationship="Model1.DailiPhieuxuat" FromRole="Phieuxuat" ToRole="Daili" />
     <Property Name="IdDL" Type="Int32" Nullable="false" />
@@ -251,7 +251,7 @@
       <PropertyRef Name="NgayGhi" />
       <PropertyRef Name="IdSach" />
     </Key>
-    <Property Name="NgayGhi" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="NgayGhi" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" Precision="3" />
     <NavigationProperty Name="Sach" Relationship="Model1.SachKho" FromRole="Kho" ToRole="Sach" />
     <Property Name="IdSach" Type="Int32" Nullable="false" />
     <Property Name="SL" Type="Int32" Nullable="false" />
@@ -273,7 +273,7 @@
       <PropertyRef Name="IdBC" />
     </Key>
     <Property Name="IdBC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Ngay" Type="DateTime" Nullable="false" />
+    <Property Name="Ngay" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Daili" Relationship="Model1.DailiBaocaoDL" FromRole="BaocaoDL" ToRole="Daili" />
     <Property Name="IdDL" Type="Int32" Nullable="false" />
     <NavigationProperty Name="CTBCDLs" Relationship="Model1.BaocaoDLCTBCDL" FromRole="BaocaoDL" ToRole="CTBCDL" />
@@ -376,7 +376,7 @@
       <PropertyRef Name="IdNXB" />
       <PropertyRef Name="NgayNhap" />
     </Key>
-    <Property Name="NgayNhap" Type="DateTime" Nullable="false" />
+    <Property Name="NgayNhap" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="TienNo" Type="Int32" Nullable="false" />
     <NavigationProperty Name="NXB" Relationship="Model1.NXBNoNXB" FromRole="NoNXB" ToRole="NXB" />
     <Property Name="IdNXB" Type="Int32" Nullable="false" />

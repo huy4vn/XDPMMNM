@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/04/2017 13:23:17
+-- Date Created: 11/04/2017 14:22:26
 -- Generated from EDMX file: C:\Users\MyPC\Documents\Visual Studio 2015\Projects\XNPM\XDPMMNM-sach\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -17,94 +17,94 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_NXBSach]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Saches] DROP CONSTRAINT [FK_NXBSach];
-GO
-IF OBJECT_ID(N'[dbo].[FK_NXBPhieunhap]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Phieunhaps] DROP CONSTRAINT [FK_NXBPhieunhap];
-GO
-IF OBJECT_ID(N'[dbo].[FK_PhieunhapCTPN]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CTPNs] DROP CONSTRAINT [FK_PhieunhapCTPN];
-GO
-IF OBJECT_ID(N'[dbo].[FK_SachCTPN]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CTPNs] DROP CONSTRAINT [FK_SachCTPN];
-GO
-IF OBJECT_ID(N'[dbo].[FK_PhieuxuatCTPX]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CTPXes] DROP CONSTRAINT [FK_PhieuxuatCTPX];
-GO
-IF OBJECT_ID(N'[dbo].[FK_SachCTPX]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CTPXes] DROP CONSTRAINT [FK_SachCTPX];
-GO
-IF OBJECT_ID(N'[dbo].[FK_DailiPhieuxuat]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Phieuxuats] DROP CONSTRAINT [FK_DailiPhieuxuat];
-GO
-IF OBJECT_ID(N'[dbo].[FK_SachKho]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Khoes] DROP CONSTRAINT [FK_SachKho];
-GO
-IF OBJECT_ID(N'[dbo].[FK_DailiBaocaoDL]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[BaocaoDLs] DROP CONSTRAINT [FK_DailiBaocaoDL];
-GO
 IF OBJECT_ID(N'[dbo].[FK_BaocaoDLCTBCDL]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CTBCDLs] DROP CONSTRAINT [FK_BaocaoDLCTBCDL];
 GO
 IF OBJECT_ID(N'[dbo].[FK_CTBCDLSach]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CTBCDLs] DROP CONSTRAINT [FK_CTBCDLSach];
 GO
+IF OBJECT_ID(N'[dbo].[FK_DailiBaocaoDL]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[BaocaoDLs] DROP CONSTRAINT [FK_DailiBaocaoDL];
+GO
 IF OBJECT_ID(N'[dbo].[FK_DailiCongno]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Congnoes] DROP CONSTRAINT [FK_DailiCongno];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SachKhoDL]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[KhoDLs] DROP CONSTRAINT [FK_SachKhoDL];
+IF OBJECT_ID(N'[dbo].[FK_DailiKhoDL]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[KhoDLs] DROP CONSTRAINT [FK_DailiKhoDL];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DailiPhieuxuat]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Phieuxuats] DROP CONSTRAINT [FK_DailiPhieuxuat];
 GO
 IF OBJECT_ID(N'[dbo].[FK_NXBNoNXB]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[NoNXBs] DROP CONSTRAINT [FK_NXBNoNXB];
 GO
-IF OBJECT_ID(N'[dbo].[FK_DailiKhoDL]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[KhoDLs] DROP CONSTRAINT [FK_DailiKhoDL];
+IF OBJECT_ID(N'[dbo].[FK_NXBPhieunhap]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Phieunhaps] DROP CONSTRAINT [FK_NXBPhieunhap];
+GO
+IF OBJECT_ID(N'[dbo].[FK_NXBSach]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Saches] DROP CONSTRAINT [FK_NXBSach];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PhieunhapCTPN]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CTPNs] DROP CONSTRAINT [FK_PhieunhapCTPN];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PhieuxuatCTPX]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CTPXes] DROP CONSTRAINT [FK_PhieuxuatCTPX];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SachCTPN]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CTPNs] DROP CONSTRAINT [FK_SachCTPN];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SachCTPX]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CTPXes] DROP CONSTRAINT [FK_SachCTPX];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SachKho]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Khoes] DROP CONSTRAINT [FK_SachKho];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SachKhoDL]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[KhoDLs] DROP CONSTRAINT [FK_SachKhoDL];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[NXBs]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[NXBs];
-GO
-IF OBJECT_ID(N'[dbo].[Dailis]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Dailis];
-GO
-IF OBJECT_ID(N'[dbo].[Saches]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Saches];
-GO
-IF OBJECT_ID(N'[dbo].[Phieunhaps]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Phieunhaps];
-GO
-IF OBJECT_ID(N'[dbo].[CTPNs]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[CTPNs];
-GO
-IF OBJECT_ID(N'[dbo].[Phieuxuats]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Phieuxuats];
-GO
-IF OBJECT_ID(N'[dbo].[CTPXes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[CTPXes];
-GO
-IF OBJECT_ID(N'[dbo].[Khoes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Khoes];
-GO
 IF OBJECT_ID(N'[dbo].[BaocaoDLs]', 'U') IS NOT NULL
     DROP TABLE [dbo].[BaocaoDLs];
-GO
-IF OBJECT_ID(N'[dbo].[CTBCDLs]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[CTBCDLs];
 GO
 IF OBJECT_ID(N'[dbo].[Congnoes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Congnoes];
 GO
+IF OBJECT_ID(N'[dbo].[CTBCDLs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CTBCDLs];
+GO
+IF OBJECT_ID(N'[dbo].[CTPNs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CTPNs];
+GO
+IF OBJECT_ID(N'[dbo].[CTPXes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CTPXes];
+GO
+IF OBJECT_ID(N'[dbo].[Dailis]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Dailis];
+GO
 IF OBJECT_ID(N'[dbo].[KhoDLs]', 'U') IS NOT NULL
     DROP TABLE [dbo].[KhoDLs];
 GO
+IF OBJECT_ID(N'[dbo].[Khoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Khoes];
+GO
 IF OBJECT_ID(N'[dbo].[NoNXBs]', 'U') IS NOT NULL
     DROP TABLE [dbo].[NoNXBs];
+GO
+IF OBJECT_ID(N'[dbo].[NXBs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[NXBs];
+GO
+IF OBJECT_ID(N'[dbo].[Phieunhaps]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Phieunhaps];
+GO
+IF OBJECT_ID(N'[dbo].[Phieuxuats]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Phieuxuats];
+GO
+IF OBJECT_ID(N'[dbo].[Saches]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Saches];
 GO
 
 -- --------------------------------------------------
