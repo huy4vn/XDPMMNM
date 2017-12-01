@@ -175,6 +175,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhoesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NhapBUS.cs" />
     <Compile Include="Controllers\NXBsController.cs" />
     <Compile Include="Controllers\PhieunhapsController.cs" />
     <Compile Include="Controllers\PhieuxuatsController.cs" />
@@ -357,6 +358,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\themes\" />
+    <Folder Include="Views\NhapBUS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
